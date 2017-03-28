@@ -47,4 +47,3 @@ stem(tInterpoladoSinc, yInterpoladoSinc)
 title("Senial interpolada mediante funcion sinc")
 xlabel("Tiempo (segundos")
 ylabel("Magnitud")
-
