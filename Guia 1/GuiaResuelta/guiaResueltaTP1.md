@@ -113,14 +113,13 @@ Genere una señal discreta con frecuencia de muestreo de 10 Hz y sobremuestreela
 ![](I1Odpox.png)
 
 1. **Escalon**
-![](5pXc8Wz.png)
+![](Ejer6escalon.png)
 
 2. **Lineal**
-![](7KmdU13.png)
+![](Ejer6lineal.png)
 
 3. **Sinc**
-![](zk2AVjG.png)
-
+![](Ejer6sinc.png)
 
 
 
