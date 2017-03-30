@@ -25,21 +25,21 @@ ylabel("Magnitud")
 grid on
 
 subplot(3, 2, 2)
-stem(convolucion1)
+stem(convolucion1, 'r')
 title("conv(x,y)")
 xlabel("Tiempo")
 ylabel("Magnitud")
 grid on
 
 subplot(3, 2, 4)
-stem(convolucion2)
+stem(convolucion2, 'r')
 title("filter(y, 1, [x zeros(1, 40)])")
 xlabel("Tiempo")
 ylabel("Magnitud")
 grid on
 
 subplot(3, 2, 6)
-stem(convolucion3)
+stem(convolucion3, 'r')
 title("sistemaLineal(1, y, x)")
 xlabel("Tiempo")
 ylabel("Magnitud")
