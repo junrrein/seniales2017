@@ -1,6 +1,6 @@
 senial1 = zeros(1, 40);
 senial1(1:10) = 1;
-senial2 = senoidal(0, 1, 40, 1, 1, 0);
+[~, senial2] = senoidal(0, 1, 40, 1, 1, 0);
 
 %senial1 = [1 2 2];
 %senial2 = [2 1 0.5];
@@ -10,14 +10,39 @@ convolucion2 = filter(senial2, 1, [senial1 zeros(1, 40)]);
 convolucion3 = sistemaLineal(1, senial2, senial1);
 
 figure
-subplot(3, 1, 1)
+subplot(3, 2, 1)
+stem(senial1)
+title("Señal de entrada x")
+xlabel("Tiempo")
+ylabel("Magnitud")
+grid on
+
+subplot(3, 2, 3)
+stem(senial2)
+title("Señal de entrada y")
+xlabel("Tiempo")
+ylabel("Magnitud")
+grid on
+
+subplot(3, 2, 2)
 stem(convolucion1)
+title("conv(x,y)")
+xlabel("Tiempo")
+ylabel("Magnitud")
 grid on
 
-subplot(3, 1, 2)
+subplot(3, 2, 4)
 stem(convolucion2)
+title("filter(y, 1, [x zeros(1, 40)])")
+xlabel("Tiempo")
+ylabel("Magnitud")
 grid on
 
-subplot(3, 1, 3)
+subplot(3, 2, 6)
 stem(convolucion3)
+title("sistemaLineal(1, y, x)")
+xlabel("Tiempo")
+ylabel("Magnitud")
 grid on
+
+setFontSize(12)
