@@ -31,7 +31,7 @@ ylabel("Magnitud")
 grid on
 
 subplot(2, 2, 4)
-stem(convoCircular, 'g')
+stem(convoCircular, 'm')
 title("Convolución circular")
 xlabel("Tiempo")
 ylabel("Magnitud")
