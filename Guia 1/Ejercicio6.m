@@ -12,39 +12,50 @@ T = 1/fm;
 figure(1)
 subplot(2, 1, 1)
 stem(tOriginal, yOriginal)
-title("Senial original")
-xlabel("Tiempo (segundos")
+title("Señal original")
+xlabel("Tiempo (segundos)")
 ylabel("Magnitud")
+grid on
 
 subplot(2, 1, 2)
 stem(tInterpoladoEscalon, yInterpoladoEscalon)
-title("Senial interpolada mediante funcion escalon")
-xlabel("Tiempo (segundos")
+title("Señal interpolada mediante funcion escalon")
+xlabel("Tiempo (segundos)")
 ylabel("Magnitud")
+grid on
+
+setFontSize(13)
 
 figure(2)
 subplot(2, 1, 1)
 stem(tOriginal, yOriginal)
-title("Senial original")
-xlabel("Tiempo (segundos")
+title("Señal original")
+xlabel("Tiempo (segundos)")
 ylabel("Magnitud")
+grid on
 
 subplot(2, 1, 2)
 stem(tInterpoladoLineal, yInterpoladoLineal)
-title("Senial interpolada mediante funcion lineal")
-xlabel("Tiempo (segundos")
+title("Señal interpolada mediante funcion lineal")
+xlabel("Tiempo (segundos)")
 ylabel("Magnitud")
+grid on
+
+setFontSize(13)
 
 figure(3)
 subplot(2, 1, 1)
 stem(tOriginal, yOriginal)
-title("Senial original")
-xlabel("Tiempo (segundos")
+title("Señal original")
+xlabel("Tiempo (segundos)")
 ylabel("Magnitud")
+grid on
 
 subplot(2, 1, 2)
 stem(tInterpoladoSinc, yInterpoladoSinc)
-title("Senial interpolada mediante funcion sinc")
-xlabel("Tiempo (segundos")
+title("Señal interpolada mediante funcion sinc")
+xlabel("Tiempo (segundos)")
 ylabel("Magnitud")
+grid on
 
+setFontSize(13)

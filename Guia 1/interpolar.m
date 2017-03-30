@@ -1,10 +1,10 @@
 function [tInterpolado, yInterpolado] = interpolar(tOriginal, yOriginal, tipoInterpolador, factorRemuestreo)
 
 T = tOriginal(2) - tOriginal(1);
-fm = 1/T;
+nuevoT = T / factorRemuestreo;
 
 % Generar el nuevo vector de tiempo
-tInterpolado = tOriginal(1) : 1/(factorRemuestreo*fm) : (tOriginal(end));
+tInterpolado = tOriginal(1) : nuevoT : (tOriginal(end) + (factorRemuestreo - 1) * nuevoT);
 % Generar el nuevo vector de valores
 yInterpolado = zeros(1, length(tInterpolado));
 

@@ -4,17 +4,15 @@ Escriba funciones que permitan generar las siguientes señales discretas:
 1. senoidal.
 2. sync.
 3. onda cuadrada.
- ![](https://i.imgur.com/ccTO7IH.png)
-
+ ![](ccTO7IH.png)
 
 ### Ejercicio 2
 Realizar las siguientes operaciones básicas sobre una señal senoidal:
-1. Señal original.
-2. Inversión.
-3. Rectificación.
-4. Cuantización de 8 niveles.
+1. Inversión.
+2. Rectificación.
+3. Cuantización de 8 niveles.
 
-![](https://i.imgur.com/7mm4S9w.png)
+![](7mm4S9w.png)
 
 ### Ejercicio 3
 Dada la señal de la figura determinar:
@@ -23,7 +21,7 @@ Dada la señal de la figura determinar:
 3. Frecuencia de la señal.
 4. Período de muestreo.
 
-![](https://i.imgur.com/iF4qMqe.png)
+![](iF4qMqe.png)
 
 
 Encontramos que la amplitud es igual a 3, vemos que hay dos períodos/ciclos de la señal en 0.1 segundos, por lo tanto $T = 0.1/2$, luego $f_s=2/0.1=20Hz$.
@@ -33,43 +31,43 @@ La fase ($\phi$) podemos determinarla usando $\phi=-2\pi f_s t_1 = -\pi/4$.
 
 ### Ejercicio 4
 
-![](https://i.imgur.com/K033j0s.png)
+![](K033j0s.png)
 
-![](https://i.imgur.com/6cvKWc5.png)
+![](6cvKWc5.png)
 
 #### Gráfica 1 - Muestreo a 100 Hz
 
-![](https://i.imgur.com/r454c6m.png)
+![](r454c6m.png)
 
 La cantidad de ciclos que se puede observar se corresponde con la frecuencia de la señal.
 
 #### Gráfica 2 - Muestreo a 25 Hz
 
-![](https://i.imgur.com/IZauItY.png)
+![](IZauItY.png)
 
 La cantidad de ciclos observados coincide con la frecuencia de la señal, pero la forma de la misma ya se pierde.
 
 #### Gráfica 3 - Muestreo a 10 Hz
 
-![](https://i.imgur.com/Soi2RMN.png)
+![](Soi2RMN.png)
 
 En esta gráfica puede verse que cada muestra fue tomada donde la señal original se anula, por lo que se obtiene una señal con valores nulos.
 
 #### Gráfica 4 - Muestreo a 4 Hz
 
-![](https://i.imgur.com/QcDVHDb.png)
+![](QcDVHDb.png)
 
 En esta gráfica, si bien el muestreo devuelve una señal con valores no nulos, la cantidad de muestras es tan pequeña que ya no es posible llegar a una conclusión correcta sobre la señal original. No se preserva ni la forma de la onda ni la cantidad de ciclos.
 
 #### Gráfica 5 - Muestreo a 1 Hz
 
-![](https://i.imgur.com/SRSakP8.png)
+![](SRSakP8.png)
 
 Este muestreo cuenta de una sola muestra. No sirve para nada.
 
 #### Gráfica 6 - Muestreo a 0,5 Hz
 
-![](https://i.imgur.com/BeOOkZK.png)
+![](BeOOkZK.png)
 
 Por la manera en que se realiza el muestreo, en este caso no se alcanza a tomar ni siquiera una muestra de la señal.
 
@@ -82,10 +80,10 @@ Para este caso, $T = 1/0,5 \, Hz = 2 \, s$. Puede verse que el extremo final del
 
 ### Ejercicio 5
 
-![](https://i.imgur.com/fUPWiUQ.png)
+![](fUPWiUQ.png)
 
 
-![](https://i.imgur.com/X8GS7V4.png)
+![](X8GS7V4.png)
 
 La frecuencia observada del resultado es de $1 Hz$, y no de $4000 Hz$, como tiene la onda original.
 
@@ -95,7 +93,7 @@ El efecto observado se denomina *aliasing*, y ocurre porque, para la frecuencia 
 
 Por ejemplo:
 
-![](https://upload.wikimedia.org/wikipedia/commons/2/28/AliasingSines.svg)
+![](AliasingSines.svg)
 
 En general, cuando una sinusoide de frecuencia $f_s$ es muestreada con frecuencia $f_m$, el número resultante de ciclos por muestra es $f_s / f_m$ (conocido como *frecuencia normalizada*), y las muestras son indistinguibles de aquellas de otra sinusoide (llamada *alias*) cuya frecuencia normalizada difiere por un entero (positivo o negativo).
 
@@ -112,18 +110,16 @@ $$
 ### Ejercicio 6
 Genere una señal discreta con frecuencia de muestreo de 10 Hz y sobremuestreela, mediante distintos tipos de interpoladores, a 4 veces la frecuencia de muestreo. Para esto, implemente la siguiente ecuación de interpolación:
 
-![](https://i.imgur.com/I1Odpox.png)
+![](I1Odpox.png)
 
-1.==Escalon==
-![](https://i.imgur.com/5pXc8Wz.png)
+1. **Escalon**
+![](Ejer6escalon.png)
 
-2.==Lineal==
-![](https://i.imgur.com/7KmdU13.png)
+2. **Lineal**
+![](Ejer6lineal.png)
 
->3.==Sinc==
-
-![](https://i.imgur.com/zk2AVjG.png)
-
+3. **Sinc**
+![](Ejer6sinc.png)
 
 
 
