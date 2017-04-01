@@ -17,32 +17,46 @@ figure(1)
 subplot(3, 2, 1)
 stem(x)
 title("Entrada")
+xlabel("Tiempo")
+ylabel("Magnitud")
 grid on
 
 subplot(3, 2, 3)
 stem(hA)
 title("hA")
+xlabel("Tiempo")
+ylabel("Magnitud")
 grid on
 
 subplot(3, 2, 5)
 stem(convIntermedia1)
 title("Salida intermedia")
+xlabel("Tiempo")
+ylabel("Magnitud")
 grid on
 
 subplot(3, 2, 2)
 stem(convIntermedia1)
 title("Salida intermedia")
+xlabel("Tiempo")
+ylabel("Magnitud")
 grid on
 
 subplot(3, 2, 4)
 stem(hB)
 title("hB")
+xlabel("Tiempo")
+ylabel("Magnitud")
 grid on
 
 subplot(3, 2, 6)
 stem(salida1)
 title("Salida final")
+xlabel("Tiempo")
+ylabel("Magnitud")
 grid on
+
+setFontSize(12)
 
 % Probando x -> hB -> hA -> y
 convIntermedia2 = conv(x, hB);
@@ -52,21 +66,29 @@ figure(2)
 subplot(3, 2, 1)
 stem(x)
 title("Entrada")
+xlabel("Tiempo")
+ylabel("Magnitud")
 grid on
 
 subplot(3, 2, 3)
 stem(hB)
 title("hB")
+xlabel("Tiempo")
+ylabel("Magnitud")
 grid on
 
 subplot(3, 2, 5)
 stem(convIntermedia2)
 title("Salida intermedia")
+xlabel("Tiempo")
+ylabel("Magnitud")
 grid on
 
 subplot(3, 2, 2)
 stem(convIntermedia2)
 title("Salida intermedia")
+xlabel("Tiempo")
+ylabel("Magnitud")
 grid on
 
 subplot(3, 2, 4)
@@ -77,4 +99,8 @@ grid on
 subplot(3, 2, 6)
 stem(salida2)
 title("Salida final")
+xlabel("Tiempo")
+ylabel("Magnitud")
 grid on
+
+setFontSize(12)

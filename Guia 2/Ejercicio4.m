@@ -17,18 +17,20 @@ H3 = respuestaImpulso(A3, B3);
 figure
 subplot(3, 1, 1)
 stem(H1)
-title("Respuesta al impulso para la ecuacion 1")
+title("Respuesta al impulso para el sistema 1")
 xlabel("Muestra")
 ylabel("Magnitud")
 
 subplot(3, 1, 2)
 stem(H2)
-title("Respuesta al impulso para la ecuacion 2")
+title("Respuesta al impulso para la ecuación 2")
 xlabel("Muestra")
 ylabel("Magnitud")
 
 subplot(3, 1, 3)
 stem(H3)
-title("Respuesta al impulso para la ecuacion 3")
+title("Respuesta al impulso para el sistema 3")
 xlabel("Muestra")
 ylabel("Magnitud")
+
+setFontSize(12)

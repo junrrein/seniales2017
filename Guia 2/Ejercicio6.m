@@ -11,21 +11,30 @@ convoCircular = convolucionCircular(senial1, senial2);
 figure
 subplot(2, 2, 1)
 stem(senial1)
-title("Senial 1")
-grid on
-
-subplot(2, 2, 2)
-stem(senial2)
-title("Senial 2")
+title("Señal 1")
+xlabel("Tiempo")
+ylabel("Magnitud")
 grid on
 
 subplot(2, 2, 3)
-stem(convoLineal)
-title("Convolucion lineal")
+stem(senial2)
+title("Señal 2")
+xlabel("Tiempo")
+ylabel("Magnitud")
+grid on
+
+subplot(2, 2, 2)
+stem(convoLineal, 'r')
+title("Convolución lineal")
+xlabel("Tiempo")
+ylabel("Magnitud")
 grid on
 
 subplot(2, 2, 4)
-stem(convoCircular)
-title("Convolucion circular")
+stem(convoCircular, 'm')
+title("Convolución circular")
+xlabel("Tiempo")
+ylabel("Magnitud")
 grid on
 
+setFontSize(12)
