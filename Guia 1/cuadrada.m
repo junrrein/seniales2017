@@ -3,7 +3,7 @@ function [t, y] = cuadrada(tInicial, tFinal, fMuestreo, fSenial, amplitud, angFa
 
     T = 1 / fMuestreo;
     t = tInicial : T : (tFinal - T);
-    y = zeros(length(t));
+    y = zeros(1,length(t));
   
     for k=1:length(t)
       if mod(2*pi*fSenial*t(k), 2*pi) >= pi 
