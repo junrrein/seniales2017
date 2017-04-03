@@ -1,6 +1,6 @@
 % generar varias señales usando randn para q tenga media cero y varianza 1
 
-y = randn(10000);
+y = single(randn(10000));
 
 limite1 = 1000;
 limite2 = 4000;
@@ -42,6 +42,10 @@ limite3 = 7000;
 % decimos que la señal es estacionaria.
 
 % ---------------------------------------------------------------------
+
+disp("-----------------------------")
+disp("Estacionariedad")
+disp("-----------------------------")
 
 disp("--------------------------")
 disp("Media de la media muestral")
@@ -93,7 +97,6 @@ var(varianzas3)
 
 varianzasEntreRealizaciones = var(y);
 
-
 disp("la media de las varianzas entre todas las realizaciones es: ");
 mean(varianzasEntreRealizaciones)
 disp("la varianza de las varianzas entre todas las realizaciones es: ");
@@ -102,4 +105,24 @@ var(varianzasEntreRealizaciones)
 % ---------------------------------------------------------------------
 
 % checkear ergodicidad
-% 
+%
+
+disp("-----------------------------")
+disp("Ergodicidad")
+disp("-----------------------------")
+
+medias = mean(y, 2); % Media calculada a lo largo de cada fila
+
+disp("la media de las medias de las realizaciones es: ");
+mean(medias)
+disp("la varianza de las medias de las realizaciones es: ");
+var(medias)
+
+% ---------------------------------------------------------------------
+
+varianzas = var(y, 0, 2); % Varianza calculada a lo largo de cada fila
+
+disp("la media de las varianzas de las realizaciones es: ");
+mean(varianzas)
+disp("la varianza de las varianzas de las realizaciones: ");
+var(varianzas)
