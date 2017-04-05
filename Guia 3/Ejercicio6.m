@@ -9,19 +9,28 @@ for ii = 1 : 8
     sonidos{ii} = senial((ii-1) * nMuestrasPorSonido + 1 : ii * nMuestrasPorSonido);
 end
 
+nombreNotas = {"do" "re" "mi" "fa" "sol" "la" "si"};
 frecuenciaNotas = [261 293 329 349 392 440 493];
 
-[~, senoidalDeComparacion] = senoidal(0, length(sonidos{1}) / fm, fm, 440, 1, 0);
-maxProductoPunto = 0;
-
-for kk = 1 : length(senoidalDeComparacion)
-    productoPunto = abs(dot(sonidos{2}, senoidalDeComparacion));
-    
-    if (productoPunto > maxProductoPunto)
-        maxProductoPunto = productoPunto;
+for zz = 1 : length(sonidos)
+  maxProductoPunto = zeros(1, length(frecuenciaNotas));
+  
+  for ii = 1 : length(frecuenciaNotas)
+    for jj = -2 : 4
+        for kk = 0 : 2*pi/90 : (2*pi - 1/90)
+            fSenoidal = frecuenciaNotas(ii)*2^jj;
+            tFinal = length(sonidos{zz}) / fm;
+            [~, senoidalDeComparacion] = senoidal(0, tFinal, fm, fSenoidal, 1, kk);
+            
+            productoPunto = abs(dot(sonidos{zz}, senoidalDeComparacion));
+            
+            if (productoPunto > maxProductoPunto(ii))
+                maxProductoPunto(ii) = productoPunto;
+            end
+        end
     end
-    
-    senoidalDeComparacion = shift(senoidalDeComparacion, 1);
+  end
+
+  notaTocadaIndice = find(maxProductoPunto == max(maxProductoPunto));
+  notaTocada{zz} = nombreNotas{notaTocadaIndice};
 end
-
-
