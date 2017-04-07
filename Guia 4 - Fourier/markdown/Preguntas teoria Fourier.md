@@ -6,36 +6,33 @@
 
 2. ¿Es siempre útil realizar el análisis de una señal mediante la Transformada de Fourier?
 
-    TODO Solamente es útil cuando es determinística, y ademas conoces el espectro de frecuencias que necesitas\
-por ejemplo tenes un ruido en tal frecuencia, bue haces el análisis de fourier  y lo eliminas\
-podes decir también que depende del tipo de señal, hay algunas (como seno, coseno) que tiene mas información en el tiempo que en frecuencia.
+    Solamente es útil cuando es determinística, y ademas conoces el espectro de frecuencias que necesitas.  
+    Por ejemplo tenés un ruido en tal frecuencia, le haces el análisis de fourier  y lo eliminas.  
+    Podes decir también que depende del tipo de señal, hay algunas (como seno, coseno) que tiene mas información en el tiempo que en frecuencia.  
+    Hay señales como los EKG, en que la información de interés contenida en la misma es más fácil de analizar en el dominio temporal que en el dominio frecuencial, por lo tanto el análisis mediante la TDF no es útil.
 
 3. ¿Se puede utilizar una base que no sea ortogonal para realizar el análisis de una señal? ¿Cuál es la ventaja de la ortogonalidad?
 
-    Se puede utilizar una base que no sea ortogonal para el análisis de una señal, pero la ventaja de la ortogonalidad es que en este caso la descomposición va a ser única, lo que simplifica el análisis. TODO\
-Yo diría que si se puede usar pero la ventaja es en el cálculo de los coeficientes de la combinación lineal salen directo del producto punto (proyección) y garantizan el menor error.
+    Se puede utilizar una base que no sea ortogonal para el análisis de una señal, pero la ventaja de la ortogonalidad es que en este caso la descomposición va a ser única, lo que simplifica el análisis.  
+    Yo diría que si se puede usar pero la ventaja es en el cálculo de los coeficientes de la combinación lineal salen directo del producto punto (proyección) y garantizan el menor error.
 
 4. ¿Existe la Transformada de Fourier de una señal senoidal?
 
-    Si. TODO Tal vez mostrarlo para el caso de una señal senoidal continua.
+    Si. Es lo que mostró Di Persia en la clase de práctica.
 
 5. ¿Por qué no se puede analizar cualquier señal con una base constituida sólo por funciones sinusoidales?
 
-    No se puede realizar un análisis frecuencial utilizando una base de funciones sinusoidales ya que, en caso de que la señal analizada tenga sus componentes desfasadas con respecto a las sinusoides de la base, estas componentes frecuenciales no serán detectadas.
-
-    Utilizar una base exponencial resuelve esto, ya que en caso de que una componente de la señal este desfasada respecto a la parte real de una de las exponenciales, en cambio estará en fase con la parte imaginaria de dicha exponencial, por lo que la componente será detectada.
+    Las sinusoidales son funciones impares, por lo tanto, sólo van a poder descomponer perfectamente otra señal periódica que también sea impar, ya que de lo contrario se está haciendo una aproximación a las sinusoidales, originando un error.
 
 6. ¿Qué relación tiene la propiedad de desplazamiento frecuencial de la TF con la modulación de señales?
-
-    TODO Ver en el audio de clase, ahí lo explica
 
     Sirve para modular las señales, si tengo una señal y la multiplico por una portadora (exponencial compleja), el espectro se corre una cantidad $F_0$.\
 si mira, si vas a la diapositiva donde dice "la familia de Fourier" que es el tema anterior a las propiedades, eso esta en 1:06hs del audio 3
 
 7. ¿Qué inconvenientes aparecen cuando pasamos de las señales analógicas a las digitales?
 
-    TODO.\
-El problema es definir una base que sirva para el análisis. Página 82 del libro.
+    El problema es definir una base que sirva para el análisis. Página 82 del libro.  
+    ¿Habrá más inconvenientes? TODO.
 
 8. ¿Cómo se manifiesta el aliasing en una señal del tiempo desde el punto de vista temporal y frecuencial? ¿Y en una imagen?
 
@@ -45,13 +42,14 @@ El problema es definir una base que sirva para el análisis. Página 82 del libr
 
     Desde el punto de vista frecuencial, esto se ve como un solapamiento de las colas de las TDF (las partes que contienen las frecuencias mas altas), haciendo que la energía de estas colas se acumule en bandas de menor frecuencia.
 
-    En una imagen este efecto se denomina aliasing espacial, y este se manifiesta típicamente como patrones de Moiré.
+    En una imagen este efecto se denomina aliasing espacial, y este se manifiesta típicamente como patrones de Moiré.  
+    También está el ejemplo de la rueda giratoria "muestreada" por una luz estroboscópica. De acuerdo a la velocidad relativa entre el giro y el muestreo, la rueda aparenta girar más lento, no girar en absoluto, o incluso girar en dirección contraria a la real.
 
 9. ¿Cómo se pueden disminuir los efectos del aliasing?
 
     Una de las maneras es simplemente aumentar la frecuencia de muestreo, de manera de muestrear correctamente las componentes de frecuencia altas que, de otro modo, provocaría aliasing. Este método no es muy común, ya que generalmente nos encontramos restringidos por el equipamiento o por otras limitantes en la frecuencia de muestreo que va a ser empleada.
 
-    En el caso típico, los efectos del aliasing se pueden disminuir filtrando las componentes del sonido que tienen una frecuencia más alta que la frecuencia de Nyquist empleada. De esta manera, no existirán componentes de frecuencia que produzcan aliasing.
+    Otra alternativa: los efectos del aliasing se pueden disminuir filtrando las componentes dea señal que tienen una frecuencia más alta que la frecuencia de Nyquist empleada. De esta manera, no existirán componentes de frecuencia que produzcan aliasing. Se utiliza un filtro pasa-bajos analógico.
 
 10. ¿Cuál es el resultado más evidente de muestrear una señal (desde el punto de vista frecuencial)?
 
@@ -76,7 +74,7 @@ por el periodo de muestreo
 
     Como la interpolación con la función Sinc reconstruye perfectamente la señal, se dice que esta función es el interpolador ideal.
 
-    Otra razón por la que se llama ideal es porque no es posible implementarlo en la práctica. En el dominio frecuencial, no es posible tener un filtro cuadrado perfecto (al menos de forma analógica). En el dominio temporal tampoco se puede trabajar con una función Sinc porque es la respuesta al impulso de un sistema no causal. Un sistema no causal es un sistema que responde a un estímulo antes de que el mismo sea aplicado. Esto no existe físicamente. (TODO ver bien qué significa esto último).
+    Otra razón por la que se llama ideal es porque no es posible implementarlo en la práctica. En el dominio frecuencial, no es posible tener un filtro cuadrado perfecto (al menos de forma analógica). En el dominio temporal tampoco se puede trabajar con una función Sinc porque un interpolador que utilice la misma no sólo es causal sino que necesita infinitas muestras para funcionar de la manera planteada teóricamente.
 
 12. ¿Cuál es la diferencia entre la Transformada de Fourier de una señal muestreada y la TDF?
 
@@ -90,7 +88,9 @@ por el periodo de muestreo
 
 14. ¿Qué ventajas puede tener plantear a la TDF como un producto de vectores y matrices? ¿Qué significa que una transformación sea unitaria y cómo se logra?
 
-    La ventaja de plantear a la TDF como un producto de vectores y matrices es que, por un lado, simplifica el análisis de encontrar la transformación inversa y, por otro lado, permite utilizar distintas técnicas del álgebra matricial para optimizar los cálculos. TODO
+    La ventaja de plantear a la TDF como un producto de vectores y matrices es que, por un lado, simplifica el análisis de encontrar la transformación inversa y, por otro lado, permite utilizar distintas técnicas del álgebra matricial para optimizar los cálculos.
+
+    TODO
 
 15. ¿Qué diferencia existe entre la TDF y la TRF?
 
@@ -98,11 +98,9 @@ por el periodo de muestreo
 
 16. ¿En qué ideas se basa la TRF para lograr su objetivo?
 
-    Reducir la cantidad de multiplicaciones y sumas empleadas.
-
-    Reconocer que hay términos en la matriz de transformación que, bajo análisis, son iguales, lo que reduce la cantidad de exponenciales complejas calculadas.
-
-    Utilizar factorizaciones que aprovechan la forma de la matriz de transformación para reducir el número de cálculos.
+    * Reducir la cantidad de multiplicaciones y sumas empleadas.
+    * Reconocer que hay términos en la matriz de transformación que, bajo análisis, son iguales, lo que reduce la cantidad de exponenciales complejas calculadas.
+    * Utilizar factorizaciones que aprovechan la forma de la matriz de transformación para reducir el número de cálculos.
 
 17. ¿Qué es la resolución frecuencial y cómo puedo aumentarla?
 
@@ -114,9 +112,7 @@ $$
 $$
     no sirve aumentar la frecuencia de muestreo. Lo que es necesario es, o bien disminuir $fm$ para un N constante, o bien aumentar N manteniendo fija $fm$.
 
-    Una forma de conseguir esto es ¿remuestreando la señal? ¿Cómo funcionaría la cosa?
-
-    TODO
+    Para aumentar la resolución frecuencial, ver página 96 del libro.
 
 18. ¿Qué significa relleno de ceros (zero-padding)?
 
@@ -125,8 +121,6 @@ $$
     Implica rellenar con ceros en el final de la señal para, de esta manera "prolongar" la duración de la misma, lo que en la ecuación de Heisenberg significa que se aumenta $N$ manteniendo $f_m$, por lo que $\Delta t$ se mantiene constante y $\Delta f$ disminuye, aumentando la resolución frecuencial.
 
 19. Cuando se utiliza la TRF, ¿dónde se guardan las frecuencias negativas?
-
-    ¿Qué son las frecuencias negativas?
 
     Sintetizar una sinusoide a partir de una sola exponencial compleja no es posible, ya que la segunda tiene una componente imaginaria.
 
@@ -140,7 +134,7 @@ cos(\omega t) = \frac{1}{2} \left(e^{j\omega t} + e^{-j\omega t}\right)
 $$
     [(Explicación de frecuencias negativas)](http://electronics.stackexchange.com/questions/15539/negative-frequencies-what-is-that/15543#15543)
 
-    Las frecuencias negativas se guardan en la segunda mitad de la TRF (las últimas N/2 componentes). ¿Por qué? ¿Por la periodicidad de la transformada de Fourier? TODO.
+    Las frecuencias negativas se guardan en la segunda mitad de la TRF (las últimas N/2 componentes) debido a la propiedad de periodicidad de la TDF.
 
 20. ¿Qué es la autocorrelación y la correlación cruzada? ¿Para qué sirven?
 
