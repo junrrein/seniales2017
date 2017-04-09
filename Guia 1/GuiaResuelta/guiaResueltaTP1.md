@@ -34,13 +34,6 @@ Realizar las siguientes operaciones básicas sobre una señal senoidal:
 
 ![](7mm4S9w.png)
 
-### Ejercicio 3
-Dada la señal de la figura determinar:
-1. Amplitud
-2. Fase
-3. Frecuencia de la señal.
-4. Período de muestreo.
-
 Código para realizar la cuantización:
 
 ```matlab
@@ -64,6 +57,13 @@ end
     
 yCuantizada = senialPositiva + minX;
 ```
+
+### Ejercicio 3
+Dada la señal de la figura determinar:
+1. Amplitud
+2. Fase
+3. Frecuencia de la señal.
+4. Período de muestreo.
 
 ![](iF4qMqe.png)
 
