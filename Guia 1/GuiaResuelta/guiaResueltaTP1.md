@@ -6,6 +6,26 @@ Escriba funciones que permitan generar las siguientes señales discretas:
 3. onda cuadrada.
  ![](ccTO7IH.png)
 
+Código para generar la onda cuadrada:
+
+```matlab
+function [t, y] = cuadrada(tInicial, tFinal, fMuestreo, fSenial, amplitud, angFase)
+% te la debo
+    
+    T = 1 / fMuestreo;
+    t = tInicial : T : (tFinal - T);
+    y = zeros(1,length(t));
+    
+    for k=1:length(t)
+      if mod(2*pi*fSenial*t(k), 2*pi) >= pi 
+        y(k) = -amplitud;
+      else  
+        y(k) = amplitud;
+      end
+    end
+end
+```
+
 ### Ejercicio 2
 Realizar las siguientes operaciones básicas sobre una señal senoidal:
 1. Inversión.
@@ -20,6 +40,30 @@ Dada la señal de la figura determinar:
 2. Fase
 3. Frecuencia de la señal.
 4. Período de muestreo.
+
+Código para realizar la cuantización:
+
+```matlab
+function yCuantizada = cuantizacion(x, N , H)
+% ENTRADA
+% x : señal de entrada
+% N : numero de niveles de cuantizacion
+% H : magnitud del cuanto o paso
+    
+minX = min(x);
+senialPositiva = x - minX;
+    
+for k=1 : length(senialPositiva)
+  if senialPositiva(k) >= 0 && senialPositiva(k) < (N-1)*H,
+    senialPositiva(k) = H*round(senialPositiva(k)/H);
+  else  % if x >= N*H 
+    senialPositiva(k) = (N-1)*H;
+  end
+    
+end
+    
+yCuantizada = senialPositiva + minX;
+```
 
 ![](iF4qMqe.png)
 
@@ -121,5 +165,56 @@ Genere una señal discreta con frecuencia de muestreo de 10 Hz y sobremuestreela
 3. **Sinc**
 ![](Ejer6sinc.png)
 
+Código para interpolar una señal:
 
+```matlab
+function [tInterpolado, yInterpolado] = interpolar(tOriginal, yOriginal, tipoInterpolador, factorRemuestreo)
+    
+T = tOriginal(2) - tOriginal(1);
+nuevoT = T / factorRemuestreo;
+    
+% Generar el nuevo vector de tiempo
+tInterpolado = tOriginal(1) : nuevoT : (tOriginal(end) + (factorRemuestreo - 1) * nuevoT);
+% Generar el nuevo vector de valores
+yInterpolado = zeros(1, length(tInterpolado));
+    
+% para una muestra de la señal interpolada
+for ii = 1 : length(tInterpolado);
+    
+% iterar sobre todas las muestras de la senial original
+    
+  % para cada muestra de la senial original
+  for jj = 1 : length(tOriginal)
+    % se multiplica esa muestra por la funcion interpolante evaluada
+    
+    % Se reduce la precision del resultado de la division porque, cuando
+    % se dividen dos numeros practicamente iguales, puede que el resultado de
+    % menor a 1 por cosas raras de los numeros flotantes.
+    % Reduciendo la precision, se obtiene el comportamiento deseado, es decir,
+    % que al dividir dos cosas casi iguales se obtenga 1 (de nuevo, por cosas
+    % raras de los numeros flotantes.
+    argInterpolante = single((tInterpolado(ii) - tOriginal(jj)) / T);
+    
+%    funcionInterpolante = @tipoInterpolador;
+    contribucion = yOriginal(jj) * feval(tipoInterpolador, argInterpolante);
+    % se acumulua
+    yInterpolado(ii) += contribucion;
+    
+  % el valor de la muestra interpolada es igual a lo acumulado entre todas
+  % las muestras originales
+  end
+% fin iteracion
+end
+```
 
+Código para la función interpolante lineal:
+
+```matlab
+function y = interpolanteLineal (x)
+    
+if (abs(x) < 1)
+  y = 1 - abs(x);
+else
+  y = 0;
+end
+```
