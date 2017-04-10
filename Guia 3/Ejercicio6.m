@@ -34,3 +34,17 @@ for zz = 1 : length(sonidos)
   notaTocadaIndice = find(maxProductoPunto == max(maxProductoPunto));
   notaTocada{zz} = nombreNotas{notaTocadaIndice};
 end
+
+%Resultado
+%>> notaTocada
+%notaTocada =
+%{
+%  [1,1] = do
+%  [1,2] = la
+%  [1,3] = do
+%  [1,4] = mi
+%  [1,5] = si
+%  [1,6] = re
+%  [1,7] = sol
+%  [1,8] = fa
+%}
