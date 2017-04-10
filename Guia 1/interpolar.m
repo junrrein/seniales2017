@@ -1,4 +1,4 @@
-function [tInterpolado, yInterpolado] = interpolar(tOriginal, yOriginal, tipoInterpolador, factorRemuestreo)
+function [tInterpolado, yInterpolado] = interpolar(tOriginal, yOriginal, fInterpolante, factorRemuestreo)
 
 T = tOriginal(2) - tOriginal(1);
 nuevoT = T / factorRemuestreo;
@@ -26,7 +26,7 @@ for ii = 1 : length(tInterpolado);
     argInterpolante = single((tInterpolado(ii) - tOriginal(jj)) / T);
     
 %    funcionInterpolante = @tipoInterpolador;
-    contribucion = yOriginal(jj) * feval(tipoInterpolador, argInterpolante);
+    contribucion = yOriginal(jj) * fInterpolante(argInterpolante);
     % se acumulua
     yInterpolado(ii) += contribucion;
     
