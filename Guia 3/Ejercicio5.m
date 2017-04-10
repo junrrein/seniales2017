@@ -66,3 +66,6 @@ end
 %numeroDiscado =
 %
 %   2   4   2   8   1   6   4
+
+% Resultado real:
+% 2 4 2 8 2 6 5
