@@ -8,10 +8,14 @@ senial = senoidal10 + senoidal20;
 
 subplot(2,1,1)
 stem(t, senial)
+title("y = sin(2*pi*f_1*t) + sin(2*pi*f_2*t), f_1 = 10 Hz, f_2 = 20 Hz")
+xlabel("Tiempo")
+ylabel("Magnitud")
 
 subplot(2,1,2)
 plotFFT(senial,fm)
 title("Espectro de magnitud de la señal")
+xlim([-25 25])
 
 setFontSize(12)
 
@@ -28,10 +32,14 @@ senial += 4;
 
 subplot(2,1,1)
 stem(t, senial)
+title("y = sin(2*pi*f_1*t) + sin(2*pi*f_2*t) + 4, f_1 = 10 Hz, f_2 = 20 Hz")
+xlabel("Tiempo")
+ylabel("Magnitud")
 
 subplot(2,1,2)
 plotFFT(senial,fm)
 title("Espectro de magnitud de la señal")
+xlim([-25 25])
 
 setFontSize(12)
 
@@ -43,48 +51,52 @@ senial = senoidal10 + senoidal11;
 
 subplot(2,1,1)
 stem(t, senial)
+title("y = sin(2*pi*f_1*t) + sin(2*pi*f_2*t), f_1 = 10 Hz, f_2 = 11 Hz")
+xlabel("Tiempo")
+ylabel("Magnitud")
 
 subplot(2,1,2)
 plotFFT(senial,fm)
 title("Espectro de magnitud de la señal")
+xlim([-15 15])
 
 setFontSize(12)
 
-% Modificacion 3 - consultar
+% Modificacion 3
 input("")
 
 [~, senoidal10coma5] = senoidal(0,1,fm,10.5,4,0);
 senial = senoidal10 + senoidal10coma5;
 
-subplot(3,1,1)
+subplot(2,1,1)
 stem(t, senial)
+title("y = sin(2*pi*f_1*t) + sin(2*pi*f_2*t), f_1 = 10 Hz, f_2 = 10,5 Hz")
+xlabel("Tiempo")
+ylabel("Magnitud")
 
-subplot(3,1,2)
-stem(t,senoidal10coma5)
-
-subplot(3,1,3)
+subplot(2,1,2)
 plotFFT(senial,fm)
 title("Espectro de magnitud de la señal")
+xlim([-15 15])
 
 
 setFontSize(12)
 
-% Modificacion 4 - consultar
+% Modificacion 4
 input("")
 
 [t, senoidal10coma5] = senoidal(0,2,fm,10.5,4,0);
 senial = [senoidal10 senoidal10] + senoidal10coma5;
 
-subplot(3,1,1)
+subplot(2,1,1)
 stem(t, senial)
+title("y = sin(2*pi*f_1*t) + sin(2*pi*f_2*t), f_1 = 10 Hz, f_2 = 10,5 Hz \nSeñal muestreada durante 2 segundos")
+xlabel("Tiempo")
+ylabel("Magnitud")
 
-subplot(3,1,2)
-stem(t,senoidal10coma5)
-
-subplot(3,1,3)
+subplot(2,1,2)
 plotFFT(senial,fm)
 title("Espectro de magnitud de la señal")
-
+xlim([-15 15])
 
 setFontSize(12)
-

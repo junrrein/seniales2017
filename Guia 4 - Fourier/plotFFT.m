@@ -10,6 +10,6 @@ espectroMagnitud = shift(espectroMagnitud, N/2 - 1);
 espectroMagnitud /= N;
 
 stem(dominioFrecuencial, espectroMagnitud)
-xlabel("frecuencia (Hz) ")
+xlabel("Frecuencia (Hz) ")
 ylabel("|X[k]|")
 grid on
