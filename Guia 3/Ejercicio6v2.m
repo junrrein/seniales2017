@@ -34,6 +34,7 @@ for ii = 1 : length(frecuenciaNotas)
 
     % Se realiza el producto punto entre todos los sonidos contra todas las senoidales de una nota dada.
     productosPunto = sonidos * senoidales;
+    % Para cada sonido, se guarda el máximo producto punto que se hizo contra esta nota
     maximosSonidosXNotas(:, ii) = max(productosPunto, [], 2);
 end
 
