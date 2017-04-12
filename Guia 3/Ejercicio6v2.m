@@ -15,14 +15,13 @@ nombreNotas = {"do" "re" "mi" "fa" "sol" "la" "si"};
 frecuenciaNotas = [261 293 329 349 392 440 493];
 
 tic
+
+maximosSonidosXNotas = zeros(size(sonidos, 1), length(frecuenciaNotas));
 senoidales = zeros(nMuestrasPorSonido, 90 * 6); % 6 es el número de armónicos
                                                 % 90 son las variaciones de fase
 tFinal = nMuestrasPorSonido / fm;
 
-for zz = 1 : size(sonidos, 1);
-  maxProductoPunto = zeros(8, length(frecuenciaNotas));
-  
-  for ii = 1 : length(frecuenciaNotas)
+for ii = 1 : length(frecuenciaNotas)
     for jj = -2 : 3
         fSenoidal = frecuenciaNotas(ii) * 2^jj;
            
@@ -32,17 +31,19 @@ for zz = 1 : size(sonidos, 1);
             senoidales(:, kk + 90*(jj + 2)) = senoidalDeComparacion;
         end
     end
-    
-    % TODO: Realizar el producto punto entre todos los sonidos contra todas las senoidales.
-    productosPunto = sonidos(zz, :) * senoidales;
-    maximo = max(productosPunto);
-    
-    if maximo > maxProductoPunto(ii)
-      maxProductoPunto(ii) = maximo;
-    end
-  end
 
-  notaTocadaIndice = find(maxProductoPunto == max(maxProductoPunto));
-  notaTocada{zz} = nombreNotas{notaTocadaIndice};
+    % Se realiza el producto punto entre todos los sonidos contra todas las senoidales de una nota dada.
+    productosPunto = sonidos * senoidales;
+    maximosSonidosXNotas(:, ii) = max(productosPunto, [], 2);
 end
+
+bitmapSonidosXNotas = maximosSonidosXNotas == max(maximosSonidosXNotas, [], 2 );
+
+for ii = 1 : length(nombreNotas)
+    indices = bitmapSonidosXNotas(:, ii);
+    notaTocadaIndex(indices) = ii;
+end
+
+notasTocadas = nombreNotas(notaTocadaIndex);
+
 toc
