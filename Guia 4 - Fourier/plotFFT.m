@@ -12,4 +12,5 @@ espectroMagnitud /= N;
 stem(dominioFrecuencial, espectroMagnitud)
 xlabel("Frecuencia (Hz) ")
 ylabel("|X[k]|")
+xlim([dominioFrecuencial(1) dominioFrecuencial(end)])
 grid on
