@@ -3,10 +3,16 @@ function plotFFT (senial, fm)
 N = length(senial);
 espectroMagnitud = abs(fft(senial));
 
-dominioFrecuencial = -N/2 + 1 : N/2;
-dominioFrecuencial *= fm/N; 
 
-espectroMagnitud = shift(espectroMagnitud, N/2 - 1);
+if mod(N, 2) == 0
+  dominioFrecuencial = -N/2 + 1 : N/2;
+  espectroMagnitud = shift(espectroMagnitud, N/2 - 1);
+else
+  dominioFrecuencial = -(N-1)/2 : (N-1)/2;
+  espectroMagnitud = shift(espectroMagnitud, (N-1)/2);
+end
+
+dominioFrecuencial *= fm/N;
 espectroMagnitud /= N;
 
 stem(dominioFrecuencial, espectroMagnitud)
