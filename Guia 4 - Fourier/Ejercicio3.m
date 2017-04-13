@@ -1,13 +1,14 @@
 clear
 
+nMuestrasRetardo = 5;
 [t, senoidal10] = senoidal(0, 1, 100, 10, 1, 0);
-senoidal10Retardada = shift(senoidal10, 10);
+senoidal10Retardada = shift(senoidal10, nMuestrasRetardo);
 
 FFT = fft(senoidal10);
 N = length(FFT);
 
 for k = 0 : N - 1
-    FFT(k+1) *= exp(-j*2*pi*k*10 / N);
+    FFT(k+1) *= exp(-j*2*pi*k*nMuestrasRetardo / N);
 end
 
 resultado = real(ifft(FFT));
