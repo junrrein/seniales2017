@@ -1,16 +1,60 @@
-## Convolución
+# Sistemas
 
-### Ejercicio 3
+# Ejercicio 1
+
+![](ejer1enunciado1.png)
+
+* Causal: Si
+* Lineal:
+    * Homogéneo: Si.
+    * Superposición: Si PREGUNTAR
+* Invariante en el tiempo: No por la componente senoidal.
+* Memoria: No posee.
+
+![](ejer1enunciado2.png)
+
+* Causal: No.
+* Lineal:
+    * Homogéneo: Si.
+    * Superposición: Si.
+* Invariante en el tiempo: Si.
+* Memoria: Posee.
+
+![](ejer1enunciado3.png)
+
+* Causal: Si
+* Lineal:
+    * Homogéneo: No.
+    * Superposición: No
+* Invariante en el tiempo: Si
+* Memoria: No posee.
+
+![](ejer1enunciado4.png)
+
+* Causal: Si
+* Lineal:
+    * Homogéneo: Si.
+    * Superposición: Si
+* Invariante en el tiempo: No
+* Memoria: No posee.
+
+### Salida de los sistemas para una entrada escalón unitario
+
+![](ejer1grafico.png)
+
+# Convolución
+
+## Ejercicio 3
 
 ![](enunciado7.png)
 
 ![](cascada.png)
 
-#### Resultado del sistema $(x[n] * h_A) * h_B$:
+### Resultado del sistema $(x[n] * h_A) * h_B$:
 
 ![](hAhB.png)
 
-#### Resultado del sistema $(x[n] * h_B) * h_A$:
+### Resultado del sistema $(x[n] * h_B) * h_A$:
 
 ![](hBhA.png)
 
