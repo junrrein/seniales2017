@@ -16,17 +16,18 @@ limite3 = 7000;
 % Idealmente, es necesario realizar esta comprobacion para todas las realizaciones
 % posibles de la señal.
 % En el mundo real, esto no es posible.
+
 % Lo que se puede hacer es tomar un conjunto reducido de realizaciones (muestra), estimar
 % los valores de la media y la varianza, y luego realizar el mismo analisis tomando
 % una mayor cantidad de realizaciones, y verificando que las estimaciones de
-% la media y la varianza vayan mejorando. Es decir, que la varianza de la media
+% la media y la varianza vayan mejorando.
+
+% Es decir, que la varianza de la media
 % muestral y la varianza de la varianza muestral vayan disminuyendo, idealmente
 % hasta anularse.
 % Esta comprobado que, si el valor que puede tomar la senial a traves de todas
 % las realizaciones en realidad corresponde a la misma distribucion para distintos
 % instantes de tiempo, la precision de nuestros estimadores va a aumentar.
-
-
 
 % checkear estacionariedad
 % calcular la media a traves de distintas realizacione, tomando cada vez mas
