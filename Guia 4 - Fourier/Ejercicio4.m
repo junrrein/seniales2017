@@ -49,7 +49,7 @@ ylabel("Magnitud")
 ylim([0 0.5])
 subplot(2, 4, 8)
 plotFFT(senial4, fm)
-title("Transformada de Fourier de Señal 3")
+title("Transformada de Fourier de Señal 4")
 ylim([0 0.07])
 
-
+setFontSize(12)
