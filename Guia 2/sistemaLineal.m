@@ -17,18 +17,24 @@ N = length(A);
 
 for n = 1 : length(salida);
     % Iteramos sobre los coeficientes b
-    for kk = 1 : M
-        if (n - kk + 1 > 0 && n - kk + 1 <= length(entrada))
+    for k = 1 : M
+        % Se hacen dos chequeos de indices:
+        % El primero chequea que no estemos intentando acceder a un valor
+        % de la entrada antes de t = 0.
+        % El segundo chequea que no se este intentando acceder a un valor de
+        % la entrada despues que esta termino. Notar que este chequeo no hace
+        % falta al iterar sobre los coeficientes a. Ver con un ejemplo.
+        if (n - k + 1 > 0 && n - k + 1 <= length(entrada))
             % Notar que se divide por a0
-            salida(n) += B(kk) * entrada(n - kk + 1) / A(1);
+            salida(n) += B(k) * entrada(n - k + 1) / A(1);
         end
     end
     
     % Iteramos sobre los coeficientes a
-    for kk = 2 : N
-        if (n - kk + 1 > 0)
+    for k = 2 : N
+        if (n - k + 1 > 0)
             % Notar que se divide por a0
-            salida(n) += A(kk) * salida(n - kk + 1) / A(1);
+            salida(n) -= A(k) * salida(n - k + 1) / A(1);
         end
     end
 end
