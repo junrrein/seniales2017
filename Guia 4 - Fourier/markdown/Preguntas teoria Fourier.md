@@ -57,7 +57,7 @@ si mira, si vas a la diapositiva donde dice "la familia de Fourier" que es el te
 
     ¿Aliasing?
 
-    ¿Periodicidad de la transformada de Fourier de una señal muestreada?
+    ¿Periodicidad de la transformada de Fourier de una señal muestreada? ESTO ES LE PREGUNTE AL PROFE
 
     y yo creo que es la relación inversa entre tiempo y frecuencia\
 es decir que lo que se comprime en el tiempo se expande en frecuencia y viceversa\
@@ -82,15 +82,13 @@ por el periodo de muestreo
 
 13. ¿Qué distorsiones incorpora el uso de ventanas rectangulares en el espectro de las señales resultantes? ¿Cómo puede minimizarse este efecto?
 
-    TODO
+    Efecto de rizado (le pregunté al profe). Ver más esto.
 
     ¿Como se obtienen las gráficas de la página 94?
 
 14. ¿Qué ventajas puede tener plantear a la TDF como un producto de vectores y matrices? ¿Qué significa que una transformación sea unitaria y cómo se logra?
 
-    La ventaja de plantear a la TDF como un producto de vectores y matrices es que, por un lado, simplifica el análisis de encontrar la transformación inversa y, por otro lado, permite utilizar distintas técnicas del álgebra matricial para optimizar los cálculos.
-
-    TODO
+    La ventaja de plantear a la TDF como un producto de vectores y matrices es que, por un lado, simplifica el análisis de encontrar la transformación inversa. VER QUE ES UNA TRANSF UNITARIA, MATRIZ ADJUNTA
 
 15. ¿Qué diferencia existe entre la TDF y la TRF?
 
@@ -198,13 +196,15 @@ $$
 
 26. ¿Y con un banco de filtros?
 
-    TODO
+    Es una pavada.
+
+    Ver que la resolución frecuencial va a estar dada por el ancho de banda de los filtros y la separación entre estas bandas.
 
 27. ¿Por qué decimos que la cóclea realiza un análisis espectral?
 
     Se dice que la cóclea realiza un análisis espectral debido a que diferentes secciones de la misma reaccionan a diferentes componentes de frecuencia del sonido. Estas reacciones son codificadas en impulsos nerviosos que son luego interpretados por el cerebro.
 
-    Una consecuencia de esta manera de percibir el sonido es que el oído humano no percibe los cambios de fase de las componentes de la señal auditiva.
+    Una consecuencia de esta manera de percibir el sonido es que el oído humano no percibe los cambios de fase de las componentes de la señal auditiva, si éstos cambios no son muy grandes ($\le 10 \, ms$).
 
 28. ¿Qué ventajas posee realizar un filtrado directamente en el dominio frecuencial?
 
@@ -234,7 +234,7 @@ $$
 
 31. ¿De qué manera podría implementar un sistema de encriptación digital mediante la TDF?
 
-    TODO
+    Cambiar los coeficientes del espectro de lugar cuasi-aleatoriamente, de una manera predeterminada. El emisor y receptor saben de qué manera está mezclada, pero encontrarla por prueba y error sería muy difícil.
 
 32. ¿Por qué la Transformada de Fourier no es adecuada para el análisis de señales no estacionarias? ¿Cómo se puede adecuar esta herramienta a este caso particular?
 
