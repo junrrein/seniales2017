@@ -47,8 +47,8 @@ La fórmula para determinar la frecuencia aparente $f_a$ de una senoidal con fre
 $$
 f_a =
 \begin{cases}
-\mod(f_m, f_s), & \text{si} \mod(f_m, f_s) \le \frac{f_m}{2} \\
-\frac{f_m}{2} - \mod(\frac{f_m}{2}, f_s), & \text{en otro caso}
+\mod(f_s, f_m), & \text{si} \mod(f_s, f_m) \le \frac{f_m}{2} \\
+\frac{f_m}{2} - \mod(f_s, \frac{f_m}{2}), & \text{en otro caso}
 \end{cases}
 $$
 
