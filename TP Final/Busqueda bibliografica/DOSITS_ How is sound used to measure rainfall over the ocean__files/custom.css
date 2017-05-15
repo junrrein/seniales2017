@@ -1,0 +1,325 @@
+/*
+CSS additions to DOSITS
+Overrides any CMS styles
+Called last
+*/
+/* Existing Styles MODs  */
+.caption {
+	font-size: 11px;
+}
+
+.bodyImageRight {
+	font-size: 11px;
+}
+/* End existing styles mod*/
+/* -------  misc. Styles ------*/
+/* to put around or on top of text that is wrapping around an image  - should force it to go below the image */
+.textgodown {
+	float: none;
+	clear: both;
+}
+.twoimageouter {
+	margin-right: 75;
+	width: 600;
+	text-align: center;
+}
+.spacer1 {
+	color:  transparent;
+	width: 200px;
+}
+/* ---------  IMAGE MODS -------*/
+/*Single center image max 380 width*/
+.ompouterimage1 {
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 400px;
+	text-align: center;
+/*	border: 1px solid rgb(192, 212, 230);*/
+}
+
+.ompinnerimage1 {
+	background-color: white;
+	padding: 5px;
+	text-align: center;
+}
+/* END Single center image max 380 width */
+/*Single center image max 480 width*/
+.ompouterimage2 {
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 500px;
+	text-align: center;
+	border: 1px solid rgb(192, 212, 230);
+}
+.ompinnerimage2 {
+	background-color: white;
+	padding: 5px;
+	text-align: center;
+}
+/* END Single center image max 480 width */
+/*Single center image max 600 width*/
+.ompouterimage3 {
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 620px;
+	text-align: center;
+	border: 1px solid rgb(192, 212, 230);
+}
+.ompinnerimage3 {
+	background-color: white;
+	padding: 5px;
+	text-align: center;
+}
+/* END Single center image max 600 width */
+/*Single center image max 700 width*/
+.ompouterimage700 {
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 720px;
+	text-align: center;
+	border: 1px solid rgb(192, 212, 230);
+}
+.ompinnerimage700 {
+	background-color: white;
+	padding: 5px;
+	text-align: center;
+}/* END Single center image max 700 width */
+/*Single center image exactly 300 width*/
+.ompouterimage300 {
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 320px;
+	text-align: center;
+	border: 1px solid rgb(192, 212, 230);
+}
+.ompinnerimage300 {
+	background-color: white;
+	padding: 5px;
+	text-align: center;
+}
+/* END Single center image 300 width */
+/*Single center image exactly 400 width*/
+.ompouterimage400 {
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 420px;
+	text-align: center;
+/*	border: 1px solid rgb(192, 212, 230);*/
+}
+.ompinnerimage400 {
+	background-color: white;
+	padding: 5px;
+	text-align: center;
+}
+/* END Single center image 400 width */
+/*Formula image */
+.ompouterimageformula {
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 370px;
+	text-align: center;
+	border: 1px solid rgb(192, 212, 230);
+}
+.ompinnerimageformula {
+	background-color: white;
+	padding: 5px;
+	text-align: center;
+}
+/* END formula image */
+.ompcaption {
+	color: #004e80;
+	font-size: 11px;
+	background-color: white;
+	/*margin: 5px;*/
+	text-align: left;
+	padding: 5px 7px 2px;
+}
+.omptitle {
+	background-color: white;
+}
+.ompimage1 {
+	border:1px solid rgb(96, 152, 201);
+
+}
+.ompimageformula {
+	/*border:1px solid rgb(96, 152, 201);*/
+	padding: 5px;
+}
+/* Formula on spreading page */
+.eqspreading {
+	padding: 5px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: white;
+}
+/* --------- ==END== OMP IMAGE MODS -------*/
+/* ---- for Additional Resources link ---- */
+.refdivomp {
+	margin-top: 15px;
+}
+.reflinkomp {
+	color: #092d5f;
+	color: #0f4e8e;
+	font-size: 16px;
+	padding: 5px;
+	margin-left: 5px;
+	text-decoration: none;
+	font-weight: bold;
+	margin-top: 10px;
+}
+a.reflinkomp:hover {
+	color: blue;
+	text-decoration: underline;
+	background-color: white;
+	border: 1px solid #cbcbcb;
+}
+a.reflinkomp:visited {
+		color: #0f4e8e;
+}
+ /*END Additional Resources*/ 
+ /*career */
+#skills {
+	display: none;
+}
+#skills:target {
+	display: block;
+}
+.linkskill {
+	-moz-box-shadow:inset 0px 1px 0px 0px #97c4fe;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #97c4fe;
+	box-shadow:inset 0px 1px 0px 0px #97c4fe;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #8abee5), color-stop(1, #011e4f) );
+	background:-moz-linear-gradient( center top, #8abee5 5%, #011e4f 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#8abee5', endColorstr='#011e4f');
+	background-color:#8abee5;
+	-webkit-border-top-left-radius:20px;
+	-moz-border-radius-topleft:20px;
+	border-top-left-radius:20px;
+	-webkit-border-top-right-radius:20px;
+	-moz-border-radius-topright:20px;
+	border-top-right-radius:20px;
+	-webkit-border-bottom-right-radius:20px;
+	-moz-border-radius-bottomright:20px;
+	border-bottom-right-radius:20px;
+	-webkit-border-bottom-left-radius:20px;
+	-moz-border-radius-bottomleft:20px;
+	border-bottom-left-radius:20px;
+	text-indent:0px;
+	border:1px solid #337fed;
+	display:inline-block;
+	color: white;
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+	font-style:normal;
+	height:28px;
+	line-height:28px;
+	width:140px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #1570cd;
+}
+.linkskill:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #011e4f), color-stop(1, #8abee5) );
+	background:-moz-linear-gradient( center top, #011e4f 5%, #8abee5 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#011e4f', endColorstr='#8abee5');
+	background-color:#011e4f;
+}.linkskill:active {
+	position:relative;
+	top:1px;
+}
+/*tables*/
+.CSSTableGenerator {
+	margin:0px;padding:0px;
+	width:100%;
+	border:1px solid #000000;
+	
+	-moz-border-radius-bottomleft:0px;
+	-webkit-border-bottom-left-radius:0px;
+	border-bottom-left-radius:0px;
+	
+	-moz-border-radius-bottomright:0px;
+	-webkit-border-bottom-right-radius:0px;
+	border-bottom-right-radius:0px;
+	
+	-moz-border-radius-topright:0px;
+	-webkit-border-top-right-radius:0px;
+	border-top-right-radius:0px;
+	
+	-moz-border-radius-topleft:0px;
+	-webkit-border-top-left-radius:0px;
+	border-top-left-radius:0px;
+}.CSSTableGenerator table{
+    border-collapse: collapse;
+        border-spacing: 0;
+	width:100%;
+	height:100%;
+	margin:0px;padding:0px;
+}.CSSTableGenerator tr:last-child td:last-child {
+	-moz-border-radius-bottomright:0px;
+	-webkit-border-bottom-right-radius:0px;
+	border-bottom-right-radius:0px;
+}
+.CSSTableGenerator table tr:first-child td:first-child {
+	-moz-border-radius-topleft:0px;
+	-webkit-border-top-left-radius:0px;
+	border-top-left-radius:0px;
+}
+.CSSTableGenerator table tr:first-child td:last-child {
+	-moz-border-radius-topright:0px;
+	-webkit-border-top-right-radius:0px;
+	border-top-right-radius:0px;
+}.CSSTableGenerator tr:last-child td:first-child{
+	-moz-border-radius-bottomleft:0px;
+	-webkit-border-bottom-left-radius:0px;
+	border-bottom-left-radius:0px;
+}.CSSTableGenerator tr:hover td{
+	
+}
+.CSSTableGenerator tr:nth-child(odd){ background-color:#ffffff; }
+.CSSTableGenerator tr:nth-child(even)    { background-color:#ffffff; }.CSSTableGenerator td{
+	vertical-align:middle;
+	
+	
+	border:1px solid #000000;
+	border-width:0px 1px 1px 0px;
+	text-align:center;
+	padding:7px;
+	font-size:10px;
+	font-family:Arial;
+	font-weight:normal;
+	color:#000000;
+}.CSSTableGenerator tr:last-child td{
+	border-width:0px 1px 0px 0px;
+}.CSSTableGenerator tr td:last-child{
+	border-width:0px 0px 1px 0px;
+}.CSSTableGenerator tr:last-child td:last-child{
+	border-width:0px 0px 0px 0px;
+}
+.CSSTableGenerator tr:first-child td{
+		background:-o-linear-gradient(bottom, #ffffff 5%, #ffffff 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #ffffff) );
+	background:-moz-linear-gradient( center top, #ffffff 5%, #ffffff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#ffffff");	background: -o-linear-gradient(top,#ffffff,ffffff);
+
+	background-color:#ffffff;
+	border:0px solid #000000;
+	text-align:center;
+	border-width:0px 0px 1px 1px;
+	font-size:14px;
+	font-family:Arial;
+	font-weight:bold;
+	color:#ffffff;
+}
+.CSSTableGenerator tr:first-child:hover td{
+	background:-o-linear-gradient(bottom, #ffffff 5%, #ffffff 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #ffffff) );
+	background:-moz-linear-gradient( center top, #ffffff 5%, #ffffff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#ffffff");	background: -o-linear-gradient(top,#ffffff,ffffff);
+
+	background-color:#ffffff;
+}
+.CSSTableGenerator tr:first-child td:first-child{
+	border-width:0px 0px 1px 0px;
+}
+.CSSTableGenerator tr:first-child td:last-child{
+	border-width:0px 0px 1px 1px;
+}
