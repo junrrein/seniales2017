@@ -1,0 +1,24 @@
+# Estimación de precipitación a partir del sonido producido en una superficie
+
+## Búsqueda bibliográfica
+
+El problema de estimación de la intensidad de lluvia a partir del sonido realizado por la misma es un problema que ha sido estudiado con considerable profundidad en el contexto de lluvia marítima[^1] [^2] [^3]. Existen modelos bastante desarrolados que toman en cuenta tanto el sonido producido por el impacto en si mismo de las gotas de lluvia en la superficie del agua, como el sonido producido por las burbujas de aire introducidas. En estos casos, se utilizan micrófonos acuáticos y el sonido analizado es subacuático, por lo que la metodología utilizada no es directamente relevante al trabajo que se quiere realizar.
+
+En lo que respecta a análisis de lluvia terrestre, no existe mucho trabajo realizado en este área. Esto se debe a que este tipo de análisis es necesario en contextos marítimos, ya que el uso de pluviómetros y técnicas similares tiene resultados poco satisfactorios en en el mar, debido al movimiento causado por el viento y el oleaje. En tierra firme, en cambio, las técnicas clásicas de medición son más que suficientes. Esto provoca una escasez de trabajo realizado en este área.
+
+Los trabajos relevantes encontrados corresponden a trabajos de fin de carrera[^4] o a trabajos presentados en conferencias[^5], Utilizan micrófonos comunes o piezoeléctricos[^6] para capturar la señal de audio producida por la lluvia, y utilizan técnicas poco sotisficadas (energía de la señal) para estimar la precipitación ocurrida.
+
+También se han examinado trabajos en de extracción de caractéristicas de señales de audio[^7] [^8], con el objetivo de utilizar estas características para realizar un análisis o clasificación de las mismas.
+
+## Propuesta de solución
+
+
+
+[^1]: Ashokan, M., Latha, G., & Ramesh, R. (2015). Analysis of shallow water ambient noise due to rain and derivation of rain parameters. Applied Acoustics, 88, 114-122.
+[^2]: Ma, B. B., & Nystuen, J. A. (2005). Passive acoustic detection and measurement of rainfall at sea. Journal of atmospheric and oceanic technology, 22(8), 1225-1248.
+[^3]: "DOSITS: How is sound used to measure rainfall over the ocean?" - http://www.dosits.org/people/studyweather/measurerainfall/
+[^4]: Gonzalez, E., & Kreiner, R. AcuRain: A Rainfall Audio Spectrum Analyzer for Android Powered Mobile Phones.
+[^5]: Trono, E. M., Guico, M. L., Libatique, N. J. C., Tangonan, G. L., Baluyot, D. N. B., Cordero, T. K. R., ... & Parrenas, A. P. F. (2012, November). Rainfall monitoring using acoustic sensors. In TENCON 2012-2012 IEEE Region 10 Conference (pp. 1-6). IEEE.
+[^6]: "A contact microphone, also known as a pickup or a piezo, is a form of microphone that senses audio vibrations through contact with solid objects. Unlike normal air microphones, contact microphones are almost completely insensitive to air vibrations but transduce only structure-borne sound" - https://en.wikipedia.org/wiki/Contact_microphone
+[^7]:Li, D., Sethi, I. K., Dimitrova, N., & McGee, T. (2001). Classification of general audio data for content-based retrieval. Pattern recognition letters, 22(5), 533-544.
+[^8]:Breebaart, J., & McKinney, M. F. (2004). Features for audio classification. In Algorithms in Ambient Intelligence (pp. 113-129). Springer Netherlands.
