@@ -2,7 +2,7 @@
 
 ## Búsqueda bibliográfica
 
-El problema de estimación de la intensidad de lluvia a partir del sonido realizado por la misma es un problema que ha sido estudiado con considerable profundidad en el contexto de lluvia marítima[^1] [^2] [^3]. Existen modelos bastante desarrolados que toman en cuenta tanto el sonido producido por el impacto en si mismo de las gotas de lluvia en la superficie del agua, como el sonido producido por las burbujas de aire introducidas. En estos casos, se utilizan micrófonos acuáticos y el sonido analizado es subacuático, por lo que la metodología utilizada no es directamente relevante al trabajo que se quiere realizar.
+El problema de estimación de la intensidad de lluvia a partir del sonido realizado por la misma es un problema que ha sido estudiado con considerable profundidad en el contexto de lluvia marítima[^1] [^2] [^3]. Existen modelos bastante desarrolados que toman en cuenta tanto el sonido producido por el impacto de las gotas de lluvia en la superficie del agua, como el sonido producido por las burbujas de aire introducidas. En estos casos, se utilizan micrófonos acuáticos y el sonido analizado es subacuático, por lo que la metodología utilizada no es directamente relevante al trabajo que se quiere realizar.
 
 En lo que respecta a análisis de lluvia terrestre, no existe mucho trabajo realizado en este área. Esto se debe a que este tipo de análisis es necesario en contextos marítimos, ya que el uso de pluviómetros y técnicas similares tiene resultados poco satisfactorios en en el mar, debido al movimiento causado por el viento y el oleaje. En tierra firme, en cambio, las técnicas clásicas de medición son más que suficientes. Esto provoca una escasez de trabajo realizado en este área.
 
@@ -12,13 +12,36 @@ También se han examinado trabajos en de extracción de caractéristicas de señ
 
 ## Propuesta de solución
 
+El trabajo constará de tres partes.
 
+La primera consiste en la recolección de datos experimentales. La situación ideal sería poder realizar grabaciones del sonido producido por la lluvia bajo condiciones de bajo ruido. Además sería conveniente poder repetir el experimento en las mismas condiciones, para obtener varias muestras de la misma situación. Como en la práctica esto es difícil o imposible de lograr, no se trabajará con el fenómeno natural.
+
+En su lugar, se utilizará un experimento controlado. Se realizarán mediciones del sonido realizado por la caída de agua de una botella plástica con tapa perforada. Se utilizarán tapas con distinta cantidad de agujeros para poder evaluar lo que sucede con distintas tasas de caída de agua. Para tener una medida de control de la cantidad de agua caída, se utilizará un pluviómetro.
+
+Para las grabaciones se utilizará un micrófono piezoeléctrico[^6] debido a que el hecho de que funciona captando vibraciones de la superficie a la cual está adherido, y no ondas de presión del aire, lo hace más adecuado para la tarea en consideración y lo hace más robusto frente a muchas fuentes de ruido externas. Para la construcción del dispositivo de grabación se utilizará como base lo descripto en [^4].
+
+La segunda parte del trabajo será el análisis de las señales obtenidas, y la búsqueda de algún parámetro o parámetros que estén correlacionados con la cantidad de agua caída.
+
+Se realizará en primer lugar un análisis exploratorio, calculando varías características de las señales (como las señaladas en [^7] y [^8]) y luego observando los resultados para identificar:
+
+1. Características que permanezcan constantes a través de todas las realizaciones.
+2. Características que permanezcan constantes a través de realizaciones correspondientes a una cierta intensidad de caída de agua.
+
+Las primeras, si bien no serán utilizadas luego, resultan de interés porque de cierta manera son las características típicas del fenómeno en estudio (la caída de agua) y resultan de interés para identificar este tipo de señales y diferenciarla de señales producidas por otros fenómenos.
+
+Las segundas resultan de interés ya que pueden servir para encontrar alguna relación matemática entre la magnitud de las mismas y la intensidad de caída de agua. Se buscará encontrar alguna relación de este tipo así como obtener alguna medida de error al utilizar esta estimación.
+
+Luego de realizar este análisis, se llega a la última parte del trabajo, que es la evaluación de la o las relaciones matemáticas encontradas anteriormente para verificar el desempeño de las mismas. Para esto, se pretende particionar los datos experimentales en un grupo que será utilizado para encontrar los parámetros a utilizar en la estimación, y otro grupo que será utilizado para la prueba de la estimación a utilizar.
+
+De ser satisfactoria la estimación utilizada, se introducirá ruido artificialmente generado en las señales de prueba, a distintos niveles de relación señal-ruido, para observar el desempeño del algoritmo bajo estas condiciones.
 
 [^1]: Ashokan, M., Latha, G., & Ramesh, R. (2015). Analysis of shallow water ambient noise due to rain and derivation of rain parameters. Applied Acoustics, 88, 114-122.
 [^2]: Ma, B. B., & Nystuen, J. A. (2005). Passive acoustic detection and measurement of rainfall at sea. Journal of atmospheric and oceanic technology, 22(8), 1225-1248.
 [^3]: "DOSITS: How is sound used to measure rainfall over the ocean?" - http://www.dosits.org/people/studyweather/measurerainfall/
 [^4]: Gonzalez, E., & Kreiner, R. AcuRain: A Rainfall Audio Spectrum Analyzer for Android Powered Mobile Phones.
 [^5]: Trono, E. M., Guico, M. L., Libatique, N. J. C., Tangonan, G. L., Baluyot, D. N. B., Cordero, T. K. R., ... & Parrenas, A. P. F. (2012, November). Rainfall monitoring using acoustic sensors. In TENCON 2012-2012 IEEE Region 10 Conference (pp. 1-6). IEEE.
-[^6]: "A contact microphone, also known as a pickup or a piezo, is a form of microphone that senses audio vibrations through contact with solid objects. Unlike normal air microphones, contact microphones are almost completely insensitive to air vibrations but transduce only structure-borne sound" - https://en.wikipedia.org/wiki/Contact_microphone
+[^6]: "A contact microphone, also known as a pickup or a piezo, is a form of microphone that senses audio vibrations through contact with solid objects. Unlike normal air microphones, contact microphones are almost completely insensitive to air vibrations but transduce only structure-borne sound"
+![](Busqueda%20bibliografica/microfono.jpg)
+https://en.wikipedia.org/wiki/Contact_microphone
 [^7]:Li, D., Sethi, I. K., Dimitrova, N., & McGee, T. (2001). Classification of general audio data for content-based retrieval. Pattern recognition letters, 22(5), 533-544.
 [^8]:Breebaart, J., & McKinney, M. F. (2004). Features for audio classification. In Algorithms in Ambient Intelligence (pp. 113-129). Springer Netherlands.
