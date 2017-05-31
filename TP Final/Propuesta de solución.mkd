@@ -1,5 +1,8 @@
 # Estimación de precipitación a partir del sonido producido en una superficie
 
+**Unrrein Julián** *junrrein@gmail.com*     
+**Primo Matías** *matyaspr@gmail.com*
+
 ## Búsqueda bibliográfica
 
 El problema de estimación de la intensidad de lluvia a partir del sonido realizado por la misma es un problema que ha sido estudiado con considerable profundidad en el contexto de lluvia marítima[^1] [^2] [^3]. Existen modelos bastante desarrolados que toman en cuenta tanto el sonido producido por el impacto de las gotas de lluvia en la superficie del agua, como el sonido producido por las burbujas de aire introducidas. En estos casos, se utilizan micrófonos acuáticos y el sonido analizado es subacuático, por lo que la metodología utilizada no es directamente relevante al trabajo que se quiere realizar.
