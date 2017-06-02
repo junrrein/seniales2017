@@ -1,44 +1,25 @@
 clear
 
-[yBaja, fm] = audioread("grabaciones/cantidadBaja.wav");
-yMedia = audioread("grabaciones/cantidadMedia.wav");
-yAlta = audioread("grabaciones/cantidadMayor.wav");
+[yBaja, fm] = audioread("grabaciones/Clip7.wav");
+yMedia = audioread("grabaciones/Clip8.wav");
 
-nMuestras = 2 * fm;
+yBaja = yBaja(200_000 : 300_000);
+yMedia = yMedia(150_000 : 250_000);
 
-yBaja = yBaja(460_000 : 460_000 + nMuestras - 1);
-yMedia = yMedia(540_000 : 540_000  + nMuestras - 1);
-yAlta = yAlta(330_000 : 330_000  + nMuestras - 1);
-
-subplot(3,1,1);
-[dominioAlta, espectroAlta] = plotFFT(yAlta, fm, @plot);
-title("Tasa de caida de agua alta");
-grid on;
-aux = xlim;
-xlim([0 aux(end) ]);
-ylim([0 0.0005]);
-
-subplot(3,1,2);
+subplot(2,1,1);
 [dominioMedia, espectroMedia] = plotFFT(yMedia, fm, @plot);
 title("Tasa de caida de agua media");
 grid on;
-aux = xlim;
-xlim([0 aux(end) ]);
-ylim([0 0.0005]);
+limiteAbcisa = find(dominioMedia >= 1500)(1);
+xlim([0 dominioMedia(limiteAbcisa) ]);
+ylim([0 max(espectroMedia)]);
 
-subplot(3,1,3);
+subplot(2,1,2);
 [dominioBaja, espectroBaja] = plotFFT(yBaja, fm, @plot);
 title("Tasa de caida de agua baja");
 grid on;
-aux = xlim;
-xlim([0 aux(end) ]);
-ylim([0 0.0005]);
+xlim([0 dominioMedia(limiteAbcisa) ]);
+ylim([0 max(espectroMedia)]);
 
-energiaBandaAlta = energiaBanda(dominioAlta, espectroAlta);
-cocientesAlta = energiaBandaAlta ./ shift(energiaBandaAlta, -1)
-
-energiaBandaMedia = energiaBanda(dominioMedia, espectroMedia);
-cocientesMedia = energiaBandaMedia ./ shift(energiaBandaMedia, -1)
-
-energiaBandaBaja = energiaBanda(dominioBaja, espectroBaja);
-cocientesBaja = energiaBandaBaja ./ shift(energiaBandaBaja, -1)
+cocientesMedia = cocientesEntreBandas(dominioMedia, espectroMedia)
+cocientesBaja = cocientesEntreBandas(dominioBaja, espectroBaja)
