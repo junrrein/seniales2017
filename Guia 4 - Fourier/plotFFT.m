@@ -1,8 +1,7 @@
-function [dominioFrecuencial, espectroMagnitud] = plotFFT (senial, fm, funcionPloteo = @stem)
+function [dominioFrecuencial, espectroMagnitud] = plotFFT (senial, fm, funcionPloteo = @stem, plotear = true)
 
 N = length(senial);
 espectroMagnitud = abs(fft(senial));
-
 
 if mod(N, 2) == 0
   dominioFrecuencial = -N/2 + 1 : N/2;
@@ -15,8 +14,11 @@ end
 dominioFrecuencial *= fm/N;
 espectroMagnitud /= N;
 
-funcionPloteo(dominioFrecuencial, espectroMagnitud)
-xlabel("Frecuencia (Hz) ")
-ylabel("|X[k]|")
-xlim([dominioFrecuencial(1) dominioFrecuencial(end)])
-grid on
+if plotear
+  funcionPloteo(dominioFrecuencial, espectroMagnitud)
+  xlabel("Frecuencia (Hz) ")
+  ylabel("|X[k]|")
+  xlim([dominioFrecuencial(1) dominioFrecuencial(end)])
+  grid on
+end
+
