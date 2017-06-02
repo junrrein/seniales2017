@@ -1,4 +1,4 @@
-function plotFFT (senial, fm)
+function [dominioFrecuencial, espectroMagnitud] = plotFFT (senial, fm, funcionPloteo = @stem)
 
 N = length(senial);
 espectroMagnitud = abs(fft(senial));
@@ -15,7 +15,7 @@ end
 dominioFrecuencial *= fm/N;
 espectroMagnitud /= N;
 
-stem(dominioFrecuencial, espectroMagnitud)
+funcionPloteo(dominioFrecuencial, espectroMagnitud)
 xlabel("Frecuencia (Hz) ")
 ylabel("|X[k]|")
 xlim([dominioFrecuencial(1) dominioFrecuencial(end)])
