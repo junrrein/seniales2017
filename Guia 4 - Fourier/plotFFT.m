@@ -1,4 +1,4 @@
-function [dominioFrecuencial, espectroMagnitud] = plotFFT (senial, fm, funcionPloteo = @stem, plotear = true)
+function [dominioFrecuencial, espectroMagnitud] = plotFFT (senial, fm, plotear = true, funcionPloteo = @stem)
 
 N = length(senial);
 espectroMagnitud = abs(fft(senial));
