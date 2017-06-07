@@ -74,8 +74,34 @@ for ii = 1 : size(bandas, 1)
   subplot(3, 2, ii)
   
   for jj = 1 : length(cocientes)
-      plot(ones(1, 5) .* mmIndexMap(jj), cocientes{jj}(:, ii), '*r', 'MarkerSize', 12)
-      title([num2str(bandas(ii,1)) ' : ' num2str(bandas(ii,2))]);
-      hold on
+    plot(ones(1, 5) .* mmIndexMap(jj), cocientes{jj}(:, ii), '*b', 'MarkerSize', 12)
+    hold on
   end
+  
+    title([num2str(bandas(ii,1)) ' : ' num2str(bandas(ii,2))]);
+    xlabel('Tasa de caída de agua (mm/min)')
+    ylabel('Energía')
+    grid on
 end
+suplabel('Magnitud de distintas bandas de frecuencia', 't');
+setFontSize(12)
+
+espectrosAGraficar = [1 1 1 1 1 1];
+limiteFrecuencia = 1500;
+limiteMagnitud = 0.1;
+
+figure(2)
+for ii = 1 : length(espectrosAGraficar)
+    subplot(3, 2, ii)
+    espectro = espectros{ii}(espectrosAGraficar(ii), :);
+    espectroNormalizado = espectro / norm(espectro);
+    plot(dominioFrecuencial, espectroNormalizado);
+    title([num2str(mmIndexMap(ii)) ' mm/min'])
+    xlabel('Frecuencia (Hz)')
+    ylabel('|X(k)|')
+    xlim([0 limiteFrecuencia])
+    ylim([0 limiteMagnitud])
+    grid on
+end
+suplabel('Espectro de señales con distintas tasas de caída de agua', 't');
+setFontSize(12)
