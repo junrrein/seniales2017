@@ -1,7 +1,6 @@
 clear
 
 [~, fm] = audioread("grabaciones/analisis/508/Clip 10");
-%fm = 8000;
 
 % Se utilizan muestras de 2 segundos
 nMuestras = 2 * fm;
@@ -55,7 +54,7 @@ for ii = 1 : length(audios)
 end
 
 % Se calcula la energía para distintas bandas de frecuencia
-bandas = [900 975; 170 230; 550 650; 900 1025; 900 1150];
+bandas = [100 170; 170 230; 550 650; 900 1025; 900 1150];
 energias = {};
 
 for ii = 1 : length(espectros)
@@ -95,7 +94,7 @@ setFontSize(12)
 % Se grafica el sonograma de alguna de las señales
 espectrosAGraficar = [1 1 1 1 1 2];
 limiteFrecuencia = 1500;
-limiteMagnitud = 30;
+limiteMagnitud = 10;
 
 figure(2)
 for ii = 1 : length(espectrosAGraficar)
@@ -105,8 +104,8 @@ for ii = 1 : length(espectrosAGraficar)
     title([num2str(mmIndexMap(ii)) ' mm/min'])
     xlabel('Frecuencia (Hz)')
     ylabel('|X(k)|')
-    xlim([0 limiteFrecuencia])
-%    ylim([0 limiteMagnitud])
+    xlim([200 400])
+    ylim([0 limiteMagnitud])
     grid on
 end
 suplabel('Espectro normalizado de señales con distintas tasas de caída de agua', 't');
@@ -162,3 +161,15 @@ xlabel('Tasa de caída de agua (mm/min)')
 ylabel('Centro de gravedad')
 grid on
 setFontSize(12)
+
+% Se hace una regresión lineal sobre los centros de gravedad
+xRegresion = [];
+yRegresion = [];
+for ii = 1 : length(centros)
+    xRegresion = [xRegresion; mmIndexMap(ii).*ones(5,1)];
+    yRegresion = [yRegresion; centros{ii}];
+end
+
+[B, rCuadrado] = regresionLineal(xRegresion, yRegresion);
+f = @(x) B(1) + B(2) * x;
+fplot(f, [0 1500])
