@@ -4,17 +4,23 @@ rutaBase = 'grabaciones/analisis/';
 tasasDeCaida = [49 95 113 232 342 508];
 [dominio, espectros] = cargarEspectros(rutaBase, tasasDeCaida);
 
+vTasasDeCaida = [];
+for ii = 1 : length(tasasDeCaida)
+    vTasasDeCaida = [vTasasDeCaida; tasasDeCaida(ii).*ones(5,1)];
+end
+
 % Regresion lineal utilizando la energia en distintas bandas de frecuencia
 anchoVentanas = 20 : 10 : 200;
 fraccionSolapamiento = 0.9;
 mejorRCuadradoPorEnergia = 0;
-xRegresion = [];
-for ii = 1 : length(tasasDeCaida)
-    xRegresion = [xRegresion; tasasDeCaida(ii).*ones(5,1)];
-end
 
-for ancho = anchoVentanas
-    limitesBandas = ventanearSenial(dominio, ancho, fraccionSolapamiento);
+energias = {};
+bandas = {};
+
+for ii = 1 : length(anchoVentanas)
+    limitesBandas = ventanearSenial(dominio, anchoVentanas(ii), fraccionSolapamiento);
+    bandas{ii} = limitesBandas;
+    energias{ii} = [];
     
     for jj = 1 : size(limitesBandas, 1)
         energiaBanda = zeros(30, 1);
@@ -25,7 +31,9 @@ for ancho = anchoVentanas
             end
         end
         
-        [B, rCuadrado] = regresionLineal(xRegresion, energiaBanda);
+        energias{ii} = [energias{ii} ; energiaBanda'];
+        
+        [B, rCuadrado] = regresionLineal(energiaBanda, vTasasDeCaida);
         
         if (rCuadrado > mejorRCuadradoPorEnergia)
             limitesMejorBanda = limitesBandas(jj, :);
@@ -41,14 +49,14 @@ close all
 rectaEnergias = @(x) mejorBPorEnergia(1) + mejorBPorEnergia(2) * x;
 
 figure(1)
-plot(xRegresion, energiasMejorRegresion, '*b', 'MarkerSize', 12)
+plot(energiasMejorRegresion, vTasasDeCaida, '*b', 'MarkerSize', 12)
 hold on
-fplot(rectaEnergias, [0 550]);
+fplot(rectaEnergias, [100 600]);
 title(['Energía en la banda de ' ...
         num2str(dominio(limitesMejorBanda(1))) ' a ' num2str(dominio(limitesMejorBanda(2))) ...
         ' Hz. r^2 = ' num2str(mejorRCuadradoPorEnergia)])
-xlabel('Tasa de caída de agua (mm/min)')
-ylabel('Energía')
+ylabel('Tasa de caída de agua (mm/min)')
+xlabel('Energía en la banda')
 legend('off')
 grid on
 
@@ -78,7 +86,7 @@ for limite = limiteSuperiorHz
         centros = [centros; centrosTemp];
     end
 
-    [B, rCuadrado] = regresionLineal(xRegresion, centros);
+    [B, rCuadrado] = regresionLineal(centros, vTasasDeCaida);
     
     if (rCuadrado > mejorRCuadradoCentros)
         mejorLimiteSuperior = dominio(limiteEnMuestras);
@@ -92,14 +100,14 @@ end
 rectaCentros = @(x) mejorBCentros(1) + mejorBCentros(2) * x;
 
 figure(2)
-plot(xRegresion, mejoresCentros, '*b', 'MarkerSize', 12)
+plot(mejoresCentros, vTasasDeCaida, '*b', 'MarkerSize', 12)
 hold on
-fplot(rectaCentros, [0 550])
+fplot(rectaCentros, [400 550])
 title(['Centro de gravedad de los espectros para distintas tasas de caída de agua, ' ...
        'calculado en la banda de 0 a ' num2str(mejorLimiteSuperior) ' Hz. r^2 = ' ...
        num2str(mejorRCuadradoCentros)])
-xlabel('Tasa de caída de agua (mm/min)')
-ylabel('Frecuencia (Hz)')
+ylabel('Tasa de caída de agua (mm/min)')
+xlabel('Centro de gravedad del espectro (Hz)')
 legend('off')
 grid on
 
@@ -129,7 +137,7 @@ for limite = limiteInferiorHz
         centros = [centros; centrosTemp];
     end
 
-    [B, rCuadrado] = regresionLineal(xRegresion, centros);
+    [B, rCuadrado] = regresionLineal(centros, vTasasDeCaida);
     
     if (rCuadrado > mejorRCuadradoCentrosInv)
         mejorLimiteInferior = dominio(limiteEnMuestras);
@@ -142,13 +150,57 @@ end
 rectaCentrosInv = @(x) mejorBCentrosInv(1) + mejorBCentrosInv(2) * x;
 
 figure(3)
-plot(xRegresion, mejoresCentrosInv, '*b', 'MarkerSize', 12)
+plot(mejoresCentrosInv, vTasasDeCaida, '*b', 'MarkerSize', 12)
 hold on
-fplot(rectaCentrosInv, [0 550])
+fplot(rectaCentrosInv, [300 500])
 title(['Centro de gravedad de los espectros para distintas tasas de caída de agua, ' ...
-       'calculado en la banda de ' num2str(mejorLimiteInferior) 'a 1500 Hz. r^2 = ' ...
+       'calculado en la banda de ' num2str(mejorLimiteInferior) ' a 1500 Hz. r^2 = ' ...
        num2str(mejorRCuadradoCentrosInv)])
-xlabel('Tasa de caída de agua (mm/min)')
-ylabel('Frecuencia (Hz)')
+ylabel('Tasa de caída de agua (mm/min)')
+xlabel('Centro de gravedad del espectro (Hz)')
 legend('off')
 grid on
+
+% Analisis de cocientes
+mejorRCuadradoCocientes = 0;
+
+for ii = 1 : length(energias)
+    for jj = 1 : rows(energias{ii})
+        for kk = jj + 1 : rows(energias{ii})
+            cocientes = energias{ii}(jj,:) ./ energias{ii}(kk,:);
+            
+            [B, rCuadrado] = regresionLineal(cocientes', vTasasDeCaida);
+    
+            if (rCuadrado > mejorRCuadradoCocientes)
+                mejorBandaNumerador = bandas{ii}(jj,:);
+                mejorBandaDenominador = bandas{ii}(kk,:);
+                mejorRCuadradoCocientes = rCuadrado;
+                mejorBCocientes = B;
+                mejoresCocientes = cocientes';
+            end
+        end    
+    end
+end
+
+banda1 = dominio(mejorBandaNumerador);
+banda2 = dominio(mejorBandaDenominador);
+rectaCocientes = @(x) mejorBCocientes(1) + mejorBCocientes(2) * x;
+
+figure(4)
+plot(mejoresCocientes, vTasasDeCaida, '*b', 'MarkerSize', 12)
+hold on
+fplot(rectaCocientes, [0 0.8])
+title(['Cociente entre las energías en las bandas de ' ...
+        num2str(banda1(1)) ' - ' num2str(banda1(2)) ' Hz y ' ...
+        num2str(banda2(1)) ' - ' num2str(banda2(2)) ' Hz. ' ...
+        'r^2 = ' num2str(mejorRCuadradoCocientes)])
+ylabel('Tasa de caída de agua (mm/min)')
+xlabel('Cociente entre las energías de las bandas')
+legend('off')
+grid on
+
+save resultadosAnalisis vTasasDeCaida ...
+    limitesMejorBanda mejorBPorEnergia mejorRCuadradoPorEnergia energiasMejorRegresion rectaEnergias ...
+    mejorLimiteSuperior mejorRCuadradoCentros mejorBCentros mejoresCentros rectaCentros ...
+    mejorLimiteInferior mejorRCuadradoCentrosInv mejorBCentrosInv mejoresCentrosInv rectaCentrosInv ...
+    mejorBandaNumerador mejorBandaDenominador mejorRCuadradoCocientes mejorBCocientes mejoresCocientes rectaCocientes;
