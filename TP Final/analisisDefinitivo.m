@@ -46,17 +46,17 @@ end
 
 close all
 
-rectaEnergias = @(x) mejorBPorEnergia(1) + mejorBPorEnergia(2) * x;
+rectaEnergias = @(y) (y - mejorBPorEnergia(1)) ./ mejorBPorEnergia(2);
 
 figure(1)
-plot(energiasMejorRegresion, vTasasDeCaida, '*b', 'MarkerSize', 12)
+plot(vTasasDeCaida, energiasMejorRegresion, '*b', 'MarkerSize', 12)
 hold on
-fplot(rectaEnergias, [100 600]);
+fplot(rectaEnergias, [0 550]);
 title(['Energía en la banda de ' ...
         num2str(dominio(limitesMejorBanda(1))) ' a ' num2str(dominio(limitesMejorBanda(2))) ...
         ' Hz. r^2 = ' num2str(mejorRCuadradoPorEnergia)])
-ylabel('Tasa de caída de agua (mm/min)')
-xlabel('Energía en la banda')
+xlabel('Tasa de caída de agua (mm/min)')
+ylabel('Energía en la banda')
 legend('off')
 grid on
 
@@ -94,20 +94,20 @@ for limite = limiteSuperiorHz
         mejorBCentros = B;
         mejoresCentros = centros;
     end
-    
 end
 
-rectaCentros = @(x) mejorBCentros(1) + mejorBCentros(2) * x;
+rectaCentros = @(y) (y - mejorBCentros(1)) ./ mejorBCentros(2);
 
 figure(2)
-plot(mejoresCentros, vTasasDeCaida, '*b', 'MarkerSize', 12)
+plot(vTasasDeCaida, mejoresCentros, '*b', 'MarkerSize', 12)
 hold on
-fplot(rectaCentros, [400 550])
-title(['Centro de gravedad de los espectros para distintas tasas de caída de agua, ' ...
-       'calculado en la banda de 0 a ' num2str(mejorLimiteSuperior) ' Hz. r^2 = ' ...
-       num2str(mejorRCuadradoCentros)])
-ylabel('Tasa de caída de agua (mm/min)')
-xlabel('Centro de gravedad del espectro (Hz)')
+fplot(rectaCentros, [0 550])
+str = {'Centro de gravedad del espectro para distintas tasas de caída de agua, ',
+       ['calculado en la banda de 0 a ' num2str(mejorLimiteSuperior) ' Hz. r^2 = ' ...
+       num2str(mejorRCuadradoCentros)]};
+title(str)
+xlabel('Tasa de caída de agua (mm/min)')
+ylabel('Centro de gravedad del espectro (Hz)')
 legend('off')
 grid on
 
@@ -147,17 +147,18 @@ for limite = limiteInferiorHz
     end
 end
 
-rectaCentrosInv = @(x) mejorBCentrosInv(1) + mejorBCentrosInv(2) * x;
+rectaCentrosInv = @(y) (y - mejorBCentrosInv(1)) ./ mejorBCentrosInv(2);
 
 figure(3)
-plot(mejoresCentrosInv, vTasasDeCaida, '*b', 'MarkerSize', 12)
+plot(vTasasDeCaida, mejoresCentrosInv, '*b', 'MarkerSize', 12)
 hold on
-fplot(rectaCentrosInv, [300 500])
-title(['Centro de gravedad de los espectros para distintas tasas de caída de agua, ' ...
-       'calculado en la banda de ' num2str(mejorLimiteInferior) ' a 1500 Hz. r^2 = ' ...
-       num2str(mejorRCuadradoCentrosInv)])
-ylabel('Tasa de caída de agua (mm/min)')
-xlabel('Centro de gravedad del espectro (Hz)')
+fplot(rectaCentrosInv, [0 550])
+str = {'Centro de gravedad del espectro para distintas tasas de caída de agua, ',
+       ['calculado en la banda de ' num2str(mejorLimiteInferior) ' a 1500 Hz. r^2 = ' ...
+       num2str(mejorRCuadradoCentrosInv)]};
+title(str)
+xlabel('Tasa de caída de agua (mm/min)')
+ylabel('Centro de gravedad del espectro (Hz)')
 legend('off')
 grid on
 
@@ -184,18 +185,19 @@ end
 
 banda1 = dominio(mejorBandaNumerador);
 banda2 = dominio(mejorBandaDenominador);
-rectaCocientes = @(x) mejorBCocientes(1) + mejorBCocientes(2) * x;
+rectaCocientes = @(y) (y - mejorBCocientes(1)) ./ mejorBCocientes(2);
 
 figure(4)
-plot(mejoresCocientes, vTasasDeCaida, '*b', 'MarkerSize', 12)
+plot(vTasasDeCaida, mejoresCocientes, '*b', 'MarkerSize', 12)
 hold on
-fplot(rectaCocientes, [0 0.8])
-title(['Cociente entre las energías en las bandas de ' ...
+fplot(rectaCocientes, [0 550])
+str = {['Cociente entre las energías en las bandas de ' ...
         num2str(banda1(1)) ' - ' num2str(banda1(2)) ' Hz y ' ...
-        num2str(banda2(1)) ' - ' num2str(banda2(2)) ' Hz. ' ...
-        'r^2 = ' num2str(mejorRCuadradoCocientes)])
-ylabel('Tasa de caída de agua (mm/min)')
-xlabel('Cociente entre las energías de las bandas')
+        num2str(banda2(1)) ' - ' num2str(banda2(2)) ' Hz'],
+        ['r^2 = ' num2str(mejorRCuadradoCocientes)]};
+title(str)
+xlabel('Tasa de caída de agua (mm/min)')
+ylabel('Cociente entre las energías de las bandas')
 legend('off')
 grid on
 
