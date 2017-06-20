@@ -1,4 +1,4 @@
-# Created by Octave 4.2.1, Sat Jun 10 19:15:05 2017 ART <matyas@matyas-N56VJ>
+# Created by Octave 4.2.1, Tue Jun 20 10:05:35 2017 -03 <julian@argon>
 # name: vTasasDeCaida
 # type: matrix
 # rows: 30
@@ -94,7 +94,7 @@
 # name: rectaEnergias
 # type: function handle
 @<anonymous>
-@(x) mejorBPorEnergia (1) + mejorBPorEnergia (2) * x
+@(y) (y - mejorBPorEnergia (1)) ./ mejorBPorEnergia (2)
 # length: 1
 # name: mejorBPorEnergia
 # type: matrix
@@ -163,7 +163,7 @@
 # name: rectaCentros
 # type: function handle
 @<anonymous>
-@(x) mejorBCentros (1) + mejorBCentros (2) * x
+@(y) (y - mejorBCentros (1)) ./ mejorBCentros (2)
 # length: 1
 # name: mejorBCentros
 # type: matrix
@@ -232,7 +232,7 @@
 # name: rectaCentrosInv
 # type: function handle
 @<anonymous>
-@(x) mejorBCentrosInv (1) + mejorBCentrosInv (2) * x
+@(y) (y - mejorBCentrosInv (1)) ./ mejorBCentrosInv (2)
 # length: 1
 # name: mejorBCentrosInv
 # type: matrix
@@ -310,7 +310,7 @@
 # name: rectaCocientes
 # type: function handle
 @<anonymous>
-@(x) mejorBCocientes (1) + mejorBCocientes (2) * x
+@(y) (y - mejorBCocientes (1)) ./ mejorBCocientes (2)
 # length: 1
 # name: mejorBCocientes
 # type: matrix
