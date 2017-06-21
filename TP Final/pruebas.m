@@ -19,33 +19,37 @@ rCuadradoEnergia = 1 - sum((vTasasDeCaida - regresionEnergias).^2)/sum((vTasasDe
 
 close all
 
-%figure(1)
+figure(1)
 subplot(2, 1, 1)
-plot(vTasasDeCaida, energiasMejorRegresion, '*o', 'MarkerSize', 10, 'LineWidth', 2)
+plot(vTasasDeCaida, energiasMejorRegresion, 'ok', 'MarkerSize', 10, 'LineWidth', 2)
 hold on
 fplot(rectaEnergias, [0 550], '--');
 set(findobj(gca, 'Type', 'Line', 'Linestyle', '--'), 'LineWidth', 2);
-title(['Calculado en los datos de analisis. r^2 = ' num2str(mejorRCuadradoPorEnergia)])
+title(['Datos de analisis. R^2 = ' num2str(mejorRCuadradoPorEnergia)])
 xlabel('Tasa de caida de agua (mm/min)')
 ylabel('Energia en la banda')
 legend('off')
 grid on
+gca1 = gca;
 
 subplot(2, 1, 2)
-plot(vTasasDeCaida, energias, '*o', 'MarkerSize', 10, 'LineWidth', 2)
+plot(vTasasDeCaida, energias, 'ok', 'MarkerSize', 10, 'LineWidth', 2)
 hold on
 fplot(rectaEnergias, [0 550], '--');
 set(findobj(gca, 'Type', 'Line', 'Linestyle', '--'), 'LineWidth', 2);
-title(['Calculado en los datos de validacion. r^2 = ' num2str(rCuadradoEnergia)])
+title(['Datos de validacion. R^2 = ' num2str(rCuadradoEnergia)])
 xlabel('Tasa de caida de agua (mm/min)')
 ylabel('Energia en la banda')
 legend('off')
 grid on
+gca2 = gca;
 
 suplabel(['Energia en la banda de ' ...
         num2str(dominio(limitesMejorBanda(1))) ' a ' num2str(dominio(limitesMejorBanda(2))) ...
         ' Hz'], 't')
-setFontSize(13)
+setFontSize(11);
+set(gca1, 'FontSize', 8)
+set(gca2, 'FontSize', 8)
 
 % Pruebas calculando el centro de gravedad hacia la izquierda
 centros = [];
@@ -73,26 +77,30 @@ plot(vTasasDeCaida, mejoresCentros, 'ok', 'MarkerSize', 10, 'LineWidth', 2)
 hold on
 fplot(rectaCentros, [0 550], '--')
 set(findobj(gca, 'Type', 'Line', 'Linestyle', '--'), 'LineWidth', 2);
-title(['Calculado en los datos de analisis. r^2 = ' num2str(mejorRCuadradoCentros)])
+title(['Datos de analisis. R^2 = ' num2str(mejorRCuadradoCentros)])
 xlabel('Tasa de caida de agua (mm/min)')
 ylabel('Centro de gravedad (Hz)')
 legend('off')
 grid on
+gca1 = gca;
 
 subplot(2, 1, 2)
 plot(vTasasDeCaida, centros, 'ok', 'MarkerSize', 10, 'LineWidth', 2)
 hold on
 fplot(rectaCentros, [0 550], '--')
 set(findobj(gca, 'Type', 'Line', 'Linestyle', '--'), 'LineWidth', 2);
-title(['Calculado en los datos de validacion. r^2 = ' num2str(rCuadradoCentros)])
+title(['Datos de validacion. R^2 = ' num2str(rCuadradoCentros)])
 xlabel('Tasa de caida de agua (mm/min)')
 ylabel('Centro de gravedad(Hz)')
 legend('off')
 grid on
+gca2 = gca;
 
 suplabel(['Centro de gravedad del espectro, ' ...
        'calculado en la banda de 0 a ' num2str(mejorLimiteSuperior) ' Hz'], 't');
-setFontSize(13)
+setFontSize(11);
+set(gca1, 'FontSize', 8)
+set(gca2, 'FontSize', 8)
 
 % Pruebas calculando el centro de gravedad hacia la derecha
 centrosInv = [];
@@ -120,25 +128,29 @@ plot(vTasasDeCaida, mejoresCentrosInv, 'ok', 'MarkerSize', 10, 'LineWidth', 2)
 hold on
 fplot(rectaCentrosInv, [0 550], '--')
 set(findobj(gca, 'Type', 'Line', 'Linestyle', '--'), 'LineWidth', 2);
-title(['Calculado en los datos de analisis. r^2 = ' num2str(mejorRCuadradoCentrosInv)])
+title(['Datos de analisis. R^2 = ' num2str(mejorRCuadradoCentrosInv)])
 xlabel('Tasa de caida de agua (mm/min)')
 ylabel('Centro de gravedad (Hz)')
 legend('off')
 grid on
+gca1 = gca;
 
 subplot(2, 1 , 2)
 plot(vTasasDeCaida, centrosInv, 'ok', 'MarkerSize', 10, 'LineWidth', 2)
 hold on
 fplot(rectaCentrosInv, [0 550], '--')
 set(findobj(gca, 'Type', 'Line', 'Linestyle', '--'), 'LineWidth', 2);
-title(['Calculado en los datos de validacion. r^2 = ' num2str(rCuadradoCentrosInv)])
+title(['Datos de validacion. R^2 = ' num2str(rCuadradoCentrosInv)])
 xlabel('Tasa de caida de agua (mm/min)')
 ylabel('Centro de gravedad (Hz)')
 legend('off')
 grid on
+gca2 = gca;
 
 suplabel(['Centro de gravedad del espectro, calculado en la banda de ' num2str(mejorLimiteInferior) ' a 1500 Hz'], 't');
-setFontSize(13)
+setFontSize(11);
+set(gca1, 'FontSize', 8)
+set(gca2, 'FontSize', 8)
 
 % Pruebas calculando el cociente entre la energia en dos bandas
 energiasBanda1 = [];
@@ -164,24 +176,28 @@ plot(vTasasDeCaida, mejoresCocientes, 'ok', 'MarkerSize', 10, 'LineWidth', 2)
 hold on
 fplot(rectaCocientes, [0 550], '--')
 set(findobj(gca, 'Type', 'Line', 'Linestyle', '--'), 'LineWidth', 2);
-title(['Calculado en los datos de analisis. r^2 = ' num2str(mejorRCuadradoCocientes)])
+title(['Datos de analisis. R^2 = ' num2str(mejorRCuadradoCocientes)])
 xlabel('Tasa de caida de agua (mm/min)')
 ylabel('Cociente')
 legend('off')
 grid on
+gca1 = gca;
 
 subplot(2, 1, 2)
 plot(vTasasDeCaida, cocientes, 'ok', 'MarkerSize', 10, 'LineWidth', 2)
 hold on
 fplot(rectaCocientes, [0 550], '--')
 set(findobj(gca, 'Type', 'Line', 'Linestyle', '--'), 'LineWidth', 2);
-title(['Calculado en los datos de validacion. r^2 = ' num2str(rCuadradoCocientes)])
+title(['Datos de validacion. R^2 = ' num2str(rCuadradoCocientes)])
 xlabel('Tasa de caida de agua (mm/min)')
 ylabel('Cociente')
 legend('off')
 grid on
+gca2 = gca;
 
 suplabel(['Cociente entre las energias en las bandas de ' ...
         num2str(banda1(1)) ' - ' num2str(banda1(2)) ' Hz y ' ...
         num2str(banda2(1)) ' - ' num2str(banda2(2)) ' Hz'], 't');
-setFontSize(13)
+setFontSize(11);
+set(gca1, 'FontSize', 8)
+set(gca2, 'FontSize', 8)
